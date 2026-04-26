@@ -20,7 +20,7 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ heroTextRef }, 
         <div className="text-center space-y-8 z-10 hero-boti">
           <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-primary/20 text-foreground/40 font-semibold text-xs tracking-[0.2em] uppercase bg-primary/[0.03] backdrop-blur-sm">
             <Sparkles size={14} className="text-primary" />
-            "a browser that's bigger on the inside"
+            A browser that's bigger on the inside.
           </div>
           <div ref={heroTextRef} className="flex justify-center mix-blend-difference">
             <Image
