@@ -96,8 +96,25 @@
     font-family: 'SharpSansDispNo1', sans-serif;
     @apply bg-[var(--background)] text-[var(--foreground)] transition-colors duration-500 antialiased;
     overflow-x: hidden;
+    cursor: none;
   }
 
+  /* Ensure interactive elements still show something or handle them specifically */
+  a, button {
+    cursor: none;
+  }
+}
+
+@layer utilities {
+  .translate-z-\[-4px\] {
+    transform: translateZ(-4px);
+  }
+  .translate-z-\[-8px\] {
+    transform: translateZ(-8px);
+  }
+}
+
+@layer base {
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold tracking-tight;
   }
