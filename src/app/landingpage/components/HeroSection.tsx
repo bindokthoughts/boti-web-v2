@@ -1,0 +1,46 @@
+'use client';
+
+import React, { forwardRef } from 'react';
+import { Sparkles } from 'lucide-react';
+import Image from 'next/image';
+import Text from '@/components/atoms/Text';
+import LogoTypo from '@/assets/images/Logo_Typo.svg';
+
+
+interface HeroSectionProps {
+  heroTextRef: React.RefObject<HTMLDivElement | null>;
+}
+
+const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ heroTextRef }, ref) => {
+  return (
+    <section ref={ref} className="hero-section min-h-[150vh] flex flex-col items-center justify-center relative px-6 py-32 overflow-hidden">
+      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center">
+
+
+        <div className="text-center space-y-8 z-10 hero-boti">
+          <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-primary/20 text-foreground/40 font-semibold text-xs tracking-[0.2em] uppercase bg-primary/[0.03] backdrop-blur-sm">
+            <Sparkles size={14} className="text-primary" />
+            "a browser that's bigger on the inside"
+          </div>
+          <div ref={heroTextRef} className="flex justify-center mix-blend-difference">
+            <Image
+              src={LogoTypo}
+              alt="BOTI"
+              width={800}
+              height={600}
+              className="w-[80vw] max-w-[800px] h-auto object-contain pointer-events-none select-none"
+              priority
+            />
+          </div>
+          <div className="reveal-subtext">
+            <Text variant="p" className="italic" opacity={0.3}>"It's pronounced BODHI"</Text>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+});
+
+HeroSection.displayName = 'HeroSection';
+
+export default HeroSection;
