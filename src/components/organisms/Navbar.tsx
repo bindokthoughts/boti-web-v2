@@ -27,14 +27,14 @@ const Navbar: React.FC = () => {
 
   useGSAP(() => {
     const links = gsap.utils.toArray('.nav-link') as HTMLElement[];
-    
+
     links.forEach(link => {
       const onMouseMove = (e: MouseEvent) => {
         const { clientX, clientY } = e;
         const { left, top, width, height } = link.getBoundingClientRect();
         const x = clientX - (left + width / 2);
         const y = clientY - (top + height / 2);
-        
+
         gsap.to(link, {
           x: x * 0.3,
           y: y * 0.3,
@@ -54,7 +54,7 @@ const Navbar: React.FC = () => {
 
       link.addEventListener('mousemove', onMouseMove);
       link.addEventListener('mouseleave', onMouseLeave);
-      
+
       return () => {
         link.removeEventListener('mousemove', onMouseMove);
         link.removeEventListener('mouseleave', onMouseLeave);
@@ -71,7 +71,7 @@ const Navbar: React.FC = () => {
         duration: 0.5,
         ease: "power2.out"
       });
-      gsap.fromTo(".mobile-nav-link", 
+      gsap.fromTo(".mobile-nav-link",
         { y: 50, opacity: 0 },
         { y: 0, opacity: 1, stagger: 0.1, duration: 0.8, ease: "expo.out", delay: 0.2 }
       );
@@ -86,9 +86,14 @@ const Navbar: React.FC = () => {
   }, [isMenuOpen]);
 
   return (
-    <nav ref={navContainerRef} className="fixed top-0 left-0 w-full z-[100] px-6 md:px-16 py-8 flex justify-between items-center backdrop-blur-md bg-background/60">
+    <nav 
+      ref={navContainerRef} 
+      className={`fixed top-0 left-0 w-full z-[100] px-6 md:px-16 py-8 flex justify-between items-center transition-all duration-500 ${
+        isMenuOpen ? 'bg-transparent' : 'backdrop-blur-md bg-background/60'
+      }`}
+    >
       <Logo />
-      
+
       {/* Desktop Nav */}
       <div className="hidden md:flex gap-12 items-center">
         {navItems.map((item) => (
@@ -96,7 +101,7 @@ const Navbar: React.FC = () => {
             {item.name}
           </NavLink>
         ))}
-        
+
         <button
           onClick={toggleTheme}
           className="p-2.5 rounded-xl border border-[var(--glass-border)] hover:bg-foreground/5 transition-all ml-4"
@@ -114,7 +119,7 @@ const Navbar: React.FC = () => {
         >
           {isDarkMode ? <Sun size={18} className="text-primary" /> : <Moon size={18} className="text-primary" />}
         </button>
-        <button 
+        <button
           className="text-foreground p-2"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
@@ -126,18 +131,29 @@ const Navbar: React.FC = () => {
       <div
         ref={menuOverlayRef}
         style={{ opacity: 0, pointerEvents: "none" }}
-        className="fixed inset-0 z-[90] bg-background/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-10 p-6 md:hidden"
+        className="fixed top-0 left-0 w-full h-full z-[90] glass-overlay flex flex-col items-center justify-between p-8 pt-32 pb-16 md:hidden"
       >
-        {navItems.map((item) => (
-          <NavLink 
-            key={item.path} 
-            href={item.path}
-            className="mobile-nav-link text-5xl font-bold tracking-tighter"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            {item.name}
-          </NavLink>
-        ))}
+        <div className="flex flex-col items-center gap-8 w-full">
+          {navItems.map((item) => (
+            <NavLink
+              key={item.path}
+              href={item.path}
+              className="mobile-nav-link text-5xl font-bold tracking-tighter"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {item.name}
+            </NavLink>
+          ))}
+        </div>
+
+        {/* Secondary Mobile Footer */}
+        <div className="mobile-nav-link flex flex-col items-center gap-6 opacity-60">
+          <div className="w-12 h-[1px] bg-foreground/20" />
+          <div className="flex gap-8 text-sm font-medium uppercase tracking-widest">
+            <a href="#" className="hover:text-primary transition-colors">Twitter</a>
+            <a href="#" className="hover:text-primary transition-colors">Github</a>
+          </div>
+        </div>
       </div>
     </nav>
   );
