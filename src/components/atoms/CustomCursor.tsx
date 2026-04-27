@@ -22,7 +22,7 @@ const CustomCursor: React.FC = () => {
 
     const handleMouseMove = (e: MouseEvent) => {
       const { clientX, clientY } = e;
-      
+
       // Calculate delta for rotation effect
       const dx = clientX - mousePos.current.x;
       const dy = clientY - mousePos.current.y;
@@ -104,12 +104,12 @@ const CustomCursor: React.FC = () => {
   }, [isMoving]);
 
   return (
-    <div 
-      ref={cursorRef} 
+    <div
+      ref={cursorRef}
       className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference hidden md:block"
       style={{ marginLeft: '-10px', marginTop: '-10px' }}
     >
-      <div 
+      <div
         ref={cubeRef}
         className="relative w-5 h-5"
         style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
