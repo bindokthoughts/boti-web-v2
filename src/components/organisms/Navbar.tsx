@@ -86,11 +86,10 @@ const Navbar: React.FC = () => {
   }, [isMenuOpen]);
 
   return (
-    <nav 
-      ref={navContainerRef} 
-      className={`fixed top-0 left-0 w-full z-[100] px-6 md:px-16 py-8 flex justify-between items-center transition-all duration-500 ${
-        isMenuOpen ? 'bg-transparent' : 'backdrop-blur-md bg-background/60'
-      }`}
+    <nav
+      ref={navContainerRef}
+      className={`fixed top-0 left-0 w-full z-[100] px-6 md:px-16 py-8 flex justify-between items-center transition-all duration-500 ${isMenuOpen ? 'bg-transparent' : 'backdrop-blur-md bg-background/60'
+        }`}
     >
       <Logo />
 
@@ -147,13 +146,13 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Secondary Mobile Footer */}
-        <div className="mobile-nav-link flex flex-col items-center gap-6 opacity-60">
+        {/* <div className="mobile-nav-link flex flex-col items-center gap-6 opacity-60">
           <div className="w-12 h-[1px] bg-foreground/20" />
           <div className="flex gap-8 text-sm font-medium uppercase tracking-widest">
             <a href="#" className="hover:text-primary transition-colors">Twitter</a>
             <a href="#" className="hover:text-primary transition-colors">Github</a>
           </div>
-        </div>
+        </div> */}
       </div>
     </nav>
   );
