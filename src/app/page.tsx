@@ -16,6 +16,7 @@ import SecondHookSection from './landingpage/components/SecondHookSection';
 import HeroSection from './landingpage/components/HeroSection';
 import ProblemSection from './landingpage/components/ProblemSection';
 import ProductSection from './landingpage/components/ProductSection';
+import TeamSection from './landingpage/components/TeamSection';
 import FloatingNav from '@/components/atoms/FloatingNav';
 import { LANDING_SECTIONS } from '@/lib/data';
 
@@ -118,6 +119,7 @@ export default function LandingPage() {
       <div id="hero"><HeroSection heroTextRef={heroTextRef} /></div>
       <div id="problem"><ProblemSection /></div>
       <div id="product"><ProductSection /></div>
+      <div id="team"><TeamSection /></div>
     </div>
   );
 }
