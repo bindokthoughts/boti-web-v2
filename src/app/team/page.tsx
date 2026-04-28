@@ -4,9 +4,10 @@ import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-import { Briefcase, Cpu, Megaphone } from 'lucide-react';
+import { founders } from '@/lib/data';
 import Text from '@/components/atoms/Text';
 import Button from '@/components/atoms/Button';
+import FounderCard from '@/components/atoms/FounderCard';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -16,32 +17,7 @@ export default function TeamPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const introTl = useRef<gsap.core.Timeline | null>(null);
 
-  const founders = [
-    {
-      name: "David Creighton",
-      role: "CEO/Co-Founder",
-      tagline: "Serial Entrepreneur",
-      description: "Operator-led. Tech-proven. GTM-native.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400&h=400",
-      icon: <Briefcase className="text-primary" size={20} />
-    },
-    {
-      name: "Adrian Lannon",
-      role: "CTO/Co-Founder",
-      tagline: "Founder of A Square",
-      description: "10+ years building in Unity, simulation, & real-time systems.",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400&h=400",
-      icon: <Cpu className="text-primary" size={20} />
-    },
-    {
-      name: "Forrester Kane",
-      role: "CMO/Co-Founder",
-      tagline: "Founder of Headword!",
-      description: "Brand & go-to-market leader for frontier tech and creator platforms.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400&h=400",
-      icon: <Megaphone className="text-primary" size={20} />
-    }
-  ];
+
 
   useGSAP(() => {
     introTl.current = gsap.timeline({
@@ -105,32 +81,7 @@ export default function TeamPage() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {founders.map((founder) => (
-            <div
-              key={founder.name}
-              className="premium-card flex flex-col gap-10 founder-card"
-            >
-              <div className="aspect-square w-full rounded-2xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
-                <img
-                  src={founder.image}
-                  alt={founder.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              <div className="space-y-6 flex-1">
-                <div className="space-y-2">
-                  <Text variant="h4" className="text-2xl">{founder.name}</Text>
-                  <div className="flex items-center gap-2 text-primary font-bold uppercase tracking-widest text-xs">
-                    {founder.icon}
-                    {founder.role}
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  <Text variant="p" className="font-bold" opacity={0.8}>"{founder.tagline}"</Text>
-                  <Text variant="p" className="italic" opacity={0.5}>"{founder.description}"</Text>
-                </div>
-              </div>
-            </div>
+            <FounderCard key={founder.name} {...founder} />
           ))}
         </div>
 

@@ -76,11 +76,19 @@ const Navbar: React.FC = () => {
         { y: 0, opacity: 1, stagger: 0.1, duration: 0.8, ease: "expo.out", delay: 0.2 }
       );
     } else {
+      gsap.to(".mobile-nav-link", {
+        y: 20,
+        opacity: 0,
+        stagger: 0.05,
+        duration: 0.3,
+        ease: "power2.in"
+      });
       gsap.to(menuOverlayRef.current, {
         opacity: 0,
         pointerEvents: "none",
         duration: 0.4,
-        ease: "power2.in"
+        ease: "power2.in",
+        delay: 0.2
       });
     }
   }, [isMenuOpen]);
@@ -106,12 +114,12 @@ const Navbar: React.FC = () => {
           className="p-2.5 rounded-xl border border-[var(--glass-border)] hover:bg-foreground/5 transition-all ml-4"
           aria-label="Toggle Theme"
         >
-          {isDarkMode ? <Sun size={16} className="text-primary" /> : <Moon size={16} className="text-primary" />}
+          {isDarkMode ? <Sun size={24} className="text-primary" /> : <Moon size={16} className="text-primary" />}
         </button>
       </div>
 
       {/* Mobile Nav Trigger */}
-      <div className="flex items-center gap-4 md:hidden">
+      <div className="flex items-center gap-4 md:hidden relative z-[100]">
         <button
           onClick={toggleTheme}
           className="p-2 rounded-lg border border-[var(--glass-border)]"

@@ -17,6 +17,8 @@ import SecondHookSection from './components/SecondHookSection';
 import HeroSection from './components/HeroSection';
 import ProblemSection from './components/ProblemSection';
 import ProductSection from './components/ProductSection';
+import FloatingNav from '@/components/atoms/FloatingNav';
+import { LANDING_SECTIONS } from '@/lib/data';
 
 export default function LandingPage() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -109,12 +111,14 @@ export default function LandingPage() {
   }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} className="flex flex-col">
-      <HookSection />
-      <SecondHookSection />
-      <HeroSection heroTextRef={heroTextRef} />
-      <ProblemSection />
-      <ProductSection />
+    <div ref={containerRef} className="flex flex-col relative test">
+      <FloatingNav sections={LANDING_SECTIONS} />
+
+      <div id="hook"><HookSection /></div>
+      <div id="second-hook"><SecondHookSection /></div>
+      <div id="hero"><HeroSection heroTextRef={heroTextRef} /></div>
+      <div id="problem"><ProblemSection /></div>
+      <div id="product"><ProductSection /></div>
     </div>
   );
 }

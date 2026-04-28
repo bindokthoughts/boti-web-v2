@@ -19,9 +19,8 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children, className = '', onCli
     <Link
       href={href}
       onClick={onClick}
-      className={`nav-link inline-block ${
-        isActive ? 'nav-link-active' : 'nav-link-inactive'
-      } ${className}`}
+      className={`text-base nav-link inline-block ${isActive ? 'nav-link-active' : 'nav-link-inactive'
+        } ${className}`}
     >
       {children}
     </Link>
