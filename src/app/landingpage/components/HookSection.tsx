@@ -43,14 +43,14 @@ const HookSection: React.FC = () => {
             <div className="overflow-hidden">
               <div ref={title1}>
                 <Text variant="h1">
-                  The Web Froze.
+                  We rebuilt the browser
                 </Text>
               </div>
             </div>
             <div className="overflow-hidden">
               <div ref={title2}>
                 <Text variant="h1" opacity={0.3}>
-                  The World Moved On.
+                  for the world the web became.
                 </Text>
               </div>
             </div>
@@ -59,11 +59,10 @@ const HookSection: React.FC = () => {
           <div className="w-full lg:w-1/2">
             <div className="space-y-4">
               {[
-                "Tech, culture, and behavior already crossed over.",
-                "We live spatially now.",
-                "Gaming went 3D.",
-                "AI holds conversations.",
-                "Work blends physical and digital."
+                "From scroll to spatial.",
+                "Any flat site becomes a 3D space you can step inside.",
+                "Right in your browser.",
+                "Step inside the web."
               ].map((text, i) => (
                 <div key={i} className="overflow-hidden">
                   <div ref={el => { subtextItems.current[i] = el; }}>

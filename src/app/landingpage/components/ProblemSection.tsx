@@ -13,14 +13,14 @@ const ProblemSection: React.FC = () => {
               <Text className="text-primary font-bold tracking-widest uppercase text-sm feature-card">"What's the problem?"</Text>
             </div>
             <div className="overflow-hidden">
-              <Text variant="h3" className="feature-card">"Most websites look flat, and that's boring."</Text>
+              <Text variant="h3" className="feature-card">"Most websites look flat, and that’s boring."</Text>
             </div>
           </div>
           <Text opacity={0.6} className="reveal-subtext">
-            "Microdoses of information and entertainment have become the norm."
+            "Microdoses of information and entertainment have become the norm. If something doesn’t grab our attention right away, we move on and forget about it."
           </Text>
           <div className="pt-8 reveal-subtext">
-            <Text variant="h4">"Why? what's the solution"</Text>
+            <Text variant="h4">"A dynamic website is critical. VR is gaining popularity and websites need to keep up."</Text>
           </div>
         </div>
 

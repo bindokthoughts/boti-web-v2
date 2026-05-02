@@ -108,7 +108,6 @@ const CustomCursor: React.FC = () => {
       }
 
       if (!hoverRotationTween.current || !hoverRotationTween.current.isActive()) {
-        console.log("Scroll rotation executing! dScroll:", dScroll);
         gsap.to(cubeRef.current, {
           rotateX: `+=${dScroll * 0.5}`,
           rotateY: `+=${dScroll * (Math.random() - 0.5) * 0.2}`,

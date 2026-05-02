@@ -10,13 +10,14 @@ const ProductSection: React.FC = () => {
       <div className="max-w-5xl space-y-8">
         <div className="overflow-hidden">
           <h3 className="text-4xl md:text-8xl font-bold tracking-tight leading-[0.9] feature-card">
-            "You don't scroll through BOTI."<br />
-            <Text variant="span" className="text-primary">"You step inside."</Text>
+            You don't scroll through BOTI.<br />
+            <Text variant="span" className="text-primary">You step inside.</Text>
           </h3>
         </div>
         <div className="flex flex-col md:flex-row gap-8 reveal-subtext">
-          <Text opacity={0.4}>"• Every click becomes a step."</Text>
-          <Text opacity={0.4}>"• Every brand becomes a place."</Text>
+          <Text opacity={0.4}>• Every click becomes a step.</Text>
+          <Text opacity={0.4}>• Every brand becomes a place.</Text>
+          <Text opacity={0.4}>• Every visit becomes a memory.</Text>
         </div>
       </div>
 
@@ -26,8 +27,8 @@ const ProductSection: React.FC = () => {
             <Globe size={32} />
           </div>
           <div className="space-y-4">
-            <Text variant="h4">"• Browser"</Text>
-            <Text opacity={0.4}>"how users experience the web"</Text>
+            <Text variant="h4">BOTI Browser</Text>
+            <Text opacity={0.4}>From scroll to spatial. Any flat site becomes a 3D space you can step inside, right in your browser.</Text>
           </div>
         </div>
 
@@ -36,8 +37,8 @@ const ProductSection: React.FC = () => {
             <Box size={32} />
           </div>
           <div className="space-y-4">
-            <Text variant="h4">"• Builder"</Text>
-            <Text opacity={0.4}>"how businesses create it"</Text>
+            <Text variant="h4">BOTI Builder</Text>
+            <Text opacity={0.4}>Immersive scenes. No code. No headset. Drag. Drop. Done. Worlds come alive.</Text>
           </div>
         </div>
       </div>
@@ -48,10 +49,10 @@ const ProductSection: React.FC = () => {
             <Smartphone className="text-primary" size={64} strokeWidth={1.5} />
           </div>
           <Text variant="p" className="text-2xl md:text-5xl font-bold tracking-tight leading-tight">
-            "BOTI Builder makes it easy to create a 3D space for your business, no tech skills or big budgets required."
+            "We play video games to escape. Bring that experience to your business and it becomes alive and fun."
           </Text>
           <div className="inline-flex px-8 py-4 rounded-full border border-primary/20 text-foreground/60 font-bold text-sm tracking-widest uppercase bg-primary/[0.03]">
-            "Built in Unity. Works on any device. No headset required."
+            Built in Unity. Works on any device. No headset required.
           </div>
         </div>
       </div>

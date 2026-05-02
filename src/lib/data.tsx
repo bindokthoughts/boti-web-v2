@@ -10,7 +10,7 @@ export const founders = [
     name: "David Creighton",
     role: "CEO/Co-Founder",
     tagline: "Serial Entrepreneur",
-    description: "Operator-led. Tech-proven. GTM-native.",
+    description: "Serial Entrepreneur. Leads vision, IP, and investor relations.",
     image: davidImg.src,
     icon: <Briefcase className="text-primary" size={20} />
   },
@@ -18,7 +18,7 @@ export const founders = [
     name: "Adrian Lannon",
     role: "CTO/Co-Founder",
     tagline: "Founder of A Square",
-    description: "10+ years building in Unity, simulation, & real-time systems.",
+    description: "Founder of A Square. 10+ years in Unity and real-time systems.",
     image: adrianImg.src,
     icon: <Cpu className="text-primary" size={20} />
   },
@@ -26,7 +26,7 @@ export const founders = [
     name: "Forrester Kane",
     role: "CMO/Co-Founder",
     tagline: "Founder of Headword!",
-    description: "Brand & go-to-market leader for frontier tech and creator platforms.",
+    description: "Founder of Headword!. Brand and go-to-market leader.",
     image: forresterImg.src,
     icon: <Megaphone className="text-primary" size={20} />
   }

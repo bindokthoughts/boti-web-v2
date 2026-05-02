@@ -9,7 +9,7 @@ import { useGSAP } from '@gsap/react';
 
 const ParticleField = () => {
   const pointsRef = useRef<THREE.Points>(null);
-  
+
   const particlesCount = 5000;
   const positions = useMemo(() => {
     const pos = new Float32Array(particlesCount * 3);
@@ -34,20 +34,20 @@ const ParticleField = () => {
 
   useFrame((state) => {
     const time = state.clock.elapsedTime;
-    
+
     // Combine native R3F mouse and manual fallback
     const mx = state.mouse.x !== 0 ? state.mouse.x : mouse.current.x;
     const my = state.mouse.y !== 0 ? state.mouse.y : mouse.current.y;
 
     if (pointsRef.current) {
-      const targetRotationY = time * 0.1 + (mx * 1.5);
-      const targetRotationX = -my * 1.0;
+      const targetRotationY = time * 0.05 + (mx * 0.1);
+      const targetRotationX = -my * 0.5;
 
       pointsRef.current.rotation.x = THREE.MathUtils.lerp(pointsRef.current.rotation.x, targetRotationX, 0.1);
       pointsRef.current.rotation.y = THREE.MathUtils.lerp(pointsRef.current.rotation.y, targetRotationY, 0.1);
 
-      pointsRef.current.position.x = THREE.MathUtils.lerp(pointsRef.current.position.x, mx * 5, 0.1);
-      pointsRef.current.position.y = THREE.MathUtils.lerp(pointsRef.current.position.y, my * 4, 0.1);
+      pointsRef.current.position.x = THREE.MathUtils.lerp(pointsRef.current.position.x, mx * 1.5, 0.05);
+      pointsRef.current.position.y = THREE.MathUtils.lerp(pointsRef.current.position.y, my * 1, 0.05);
     }
   });
 

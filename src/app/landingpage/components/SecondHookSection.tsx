@@ -31,24 +31,18 @@ const SecondHookSection: React.FC = () => {
           <div className="space-y-2 overflow-hidden">
             <div className="overflow-hidden reveal-bottom">
               <Text variant="h2" className="text-primary">
-                But the browser?
+                The Web Froze.
               </Text>
             </div>
             <div className="overflow-hidden reveal-bottom">
               <Text variant="h2" className="text-foreground">
-                Still scrolls.
-              </Text>
-              <Text variant="h2" className="text-foreground">
-                Still loads.
-              </Text>
-              <Text variant="h2" className="text-foreground">
-                Still bounces.
+                The World Moved On.
               </Text>
             </div>
           </div>
           <div className="overflow-hidden reveal-bottom">
-            <Text variant="p" opacity={0.4} className="italic">
-              "It never became a place."
+            <Text variant="p" opacity={0.4} className="italic max-w-2xl">
+              "Tech, culture, and behavior already crossed over. We live spatially now."
             </Text>
           </div>
         </div>
