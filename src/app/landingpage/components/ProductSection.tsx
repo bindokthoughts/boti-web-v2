@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Globe, Box, Smartphone } from 'lucide-react';
+import Image from 'next/image';
+import { Globe, Box, Smartphone, Map } from 'lucide-react';
 import Text from '@/components/atoms/Text';
 
 const ProductSection: React.FC = () => {
@@ -21,24 +22,46 @@ const ProductSection: React.FC = () => {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8 feature-grid">
-        <div className="premium-card space-y-8 group feature-card hover:-translate-y-2 transition-transform duration-500">
-          <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center text-white shadow-[0_0_20px_rgba(0,70,255,0.4)]">
-            <Globe size={32} />
+      <div className="grid md:grid-cols-3 gap-8 feature-grid">
+        <div className="premium-card p-0 overflow-hidden group feature-card hover:-translate-y-2 transition-transform duration-500">
+          <div className="relative h-64 w-full">
+            <Image src="/images/product-browser.png" alt="BOTI Browser" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60" />
+            <div className="absolute bottom-6 left-6 w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white shadow-[0_0_20px_rgba(0,70,255,0.4)]">
+              <Globe size={24} />
+            </div>
           </div>
-          <div className="space-y-4">
+          <div className="p-8 space-y-4">
             <Text variant="h4">BOTI Browser</Text>
             <Text opacity={0.4}>From scroll to spatial. Any flat site becomes a 3D space you can step inside, right in your browser.</Text>
           </div>
         </div>
 
-        <div className="premium-card space-y-8 group border-primary/20 feature-card hover:-translate-y-2 transition-transform duration-500">
-          <div className="w-16 h-16 bg-foreground rounded-2xl flex items-center justify-center text-background">
-            <Box size={32} />
+        <div className="premium-card p-0 overflow-hidden group border-primary/20 feature-card hover:-translate-y-2 transition-transform duration-500">
+          <div className="relative h-64 w-full">
+            <Image src="/images/product-builder.png" alt="BOTI Builder" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60" />
+            <div className="absolute bottom-6 left-6 w-12 h-12 bg-foreground rounded-xl flex items-center justify-center text-background">
+              <Box size={24} />
+            </div>
           </div>
-          <div className="space-y-4">
+          <div className="p-8 space-y-4">
             <Text variant="h4">BOTI Builder</Text>
             <Text opacity={0.4}>Immersive scenes. No code. No headset. Drag. Drop. Done. Worlds come alive.</Text>
+          </div>
+        </div>
+
+        <div className="premium-card p-0 overflow-hidden group feature-card hover:-translate-y-2 transition-transform duration-500">
+          <div className="relative h-64 w-full">
+            <Image src="/images/product-landscape.png" alt="BOTI Landscape" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60" />
+            <div className="absolute bottom-6 left-6 w-12 h-12 bg-primary/20 border border-primary/40 rounded-xl flex items-center justify-center text-primary">
+              <Map size={24} />
+            </div>
+          </div>
+          <div className="p-8 space-y-4">
+            <Text variant="h4">BOTI Landscape</Text>
+            <Text opacity={0.4}>An Al-powered evolution of the web. Discoverable Microverses, crafted and owned by users.</Text>
           </div>
         </div>
       </div>

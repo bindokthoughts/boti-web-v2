@@ -22,6 +22,7 @@ const ParticleField = () => {
   }, []);
 
   const mouse = useRef({ x: 0, y: 0 });
+  const timeRef = useRef(0);
 
   React.useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -32,8 +33,9 @@ const ParticleField = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  useFrame((state) => {
-    const time = state.clock.elapsedTime;
+  useFrame((state, delta) => {
+    timeRef.current += delta;
+    const time = timeRef.current;
 
     // Combine native R3F mouse and manual fallback
     const mx = state.mouse.x !== 0 ? state.mouse.x : mouse.current.x;

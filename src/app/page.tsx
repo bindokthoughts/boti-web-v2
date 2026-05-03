@@ -55,7 +55,6 @@ export default function LandingPage() {
     // 3. Section specific animations
     gsap.to(heroTextRef.current, {
       scale: 1.2,
-      opacity: 0.1,
       scrollTrigger: {
         trigger: ".hero-section",
         start: "top center",
