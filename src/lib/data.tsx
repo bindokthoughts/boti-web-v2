@@ -33,10 +33,10 @@ export const founders = [
 ];
 
 export const LANDING_SECTIONS = [
-  { id: 'hook', label: 'Start' },
-  { id: 'second-hook', label: 'Ecosystem' },
   { id: 'hero', label: 'Hero' },
-  { id: 'problem', label: 'Problem' },
   { id: 'product', label: 'Product' },
+  { id: 'problem', label: 'Problem' },
+  { id: 'parts', label: 'Parts' },
   { id: 'team', label: 'Team' },
+  { id: 'contact', label: 'Contact' },
 ];

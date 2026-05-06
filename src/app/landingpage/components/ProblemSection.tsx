@@ -20,7 +20,7 @@ const ProblemSection: React.FC = () => {
             "Microdoses of information and entertainment have become the norm. If something doesn’t grab our attention right away, we move on and forget about it."
           </Text>
           <div className="pt-8 reveal-subtext">
-            <Text variant="h4">"A dynamic website is critical. VR is gaining popularity and websites need to keep up."</Text>
+            <Text variant="h4">"A dynamic website is critical. VR is gaining popularity and websites need to keep up to stay relevant."</Text>
           </div>
         </div>
 

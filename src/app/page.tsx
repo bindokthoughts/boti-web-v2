@@ -11,12 +11,12 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-import HookSection from './landingpage/components/HookSection';
-import SecondHookSection from './landingpage/components/SecondHookSection';
 import HeroSection from './landingpage/components/HeroSection';
 import ProblemSection from './landingpage/components/ProblemSection';
 import ProductSection from './landingpage/components/ProductSection';
+import PartsSection from './landingpage/components/PartsSection';
 import TeamSection from './landingpage/components/TeamSection';
+import Contact from '@/components/organisms/Contact';
 import FloatingNav from '@/components/atoms/FloatingNav';
 import { LANDING_SECTIONS } from '@/lib/data';
 
@@ -39,8 +39,7 @@ export default function LandingPage() {
       ease: "power4.inOut",
       immediateRender: false,
       clearProps: "all"
-    }, "+=1"); // Start after HookSection intro has begun
-
+    });
     // 2. Scroll Trigger for Reversal at Top
     ScrollTrigger.create({
       start: "top top",
@@ -113,12 +112,12 @@ export default function LandingPage() {
     <div ref={containerRef} className="flex flex-col relative">
       <FloatingNav sections={LANDING_SECTIONS} />
       
-      <div id="hook"><HookSection /></div>
-      <div id="second-hook"><SecondHookSection /></div>
       <div id="hero"><HeroSection heroTextRef={heroTextRef} /></div>
-      <div id="problem"><ProblemSection /></div>
       <div id="product"><ProductSection /></div>
+      <div id="problem"><ProblemSection /></div>
+      <div id="parts"><PartsSection /></div>
       <div id="team"><TeamSection /></div>
+      <div id="contact"><Contact /></div>
     </div>
   );
 }
