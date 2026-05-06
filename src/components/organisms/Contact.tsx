@@ -21,6 +21,7 @@ const Contact: React.FC = () => {
       opacity: 0,
       duration: 1.5,
       ease: "power4.out",
+      clearProps: "all",
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top 80%",
@@ -33,6 +34,7 @@ const Contact: React.FC = () => {
       stagger: 0.1,
       duration: 1,
       ease: "power3.out",
+      clearProps: "all",
       scrollTrigger: {
         trigger: ".contact-form",
         start: "top 85%",

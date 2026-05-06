@@ -14,7 +14,7 @@ if (typeof window !== 'undefined') {
 import HeroSection from './landingpage/components/HeroSection';
 import ProblemSection from './landingpage/components/ProblemSection';
 import ProductSection from './landingpage/components/ProductSection';
-import PartsSection from './landingpage/components/PartsSection';
+import OurSolutionSection from './landingpage/components/OurSolutionSection';
 import TeamSection from './landingpage/components/TeamSection';
 import Contact from '@/components/organisms/Contact';
 import FloatingNav from '@/components/atoms/FloatingNav';
@@ -40,17 +40,6 @@ export default function LandingPage() {
       immediateRender: false,
       clearProps: "all"
     });
-    // 2. Scroll Trigger for Reversal at Top
-    ScrollTrigger.create({
-      start: "top top",
-      onEnter: () => {
-        if (introTl.current?.reversed()) introTl.current.play();
-      },
-      onLeaveBack: () => {
-        introTl.current?.reverse();
-      }
-    });
-
     // 3. Section specific animations
     gsap.to(heroTextRef.current, {
       scale: 1.2,
@@ -70,6 +59,7 @@ export default function LandingPage() {
         stagger: 0.2,
         duration: 1,
         ease: "power4.out",
+        clearProps: "all",
         scrollTrigger: {
           trigger: grid,
           start: "top 80%",
@@ -84,6 +74,7 @@ export default function LandingPage() {
         opacity: 0,
         y: 50,
         stagger: 0.2,
+        clearProps: "all",
         scrollTrigger: {
           trigger: grid,
           start: "top 85%",
@@ -115,7 +106,7 @@ export default function LandingPage() {
       <div id="hero"><HeroSection heroTextRef={heroTextRef} /></div>
       <div id="product"><ProductSection /></div>
       <div id="problem"><ProblemSection /></div>
-      <div id="parts"><PartsSection /></div>
+      <div id="solution"><OurSolutionSection /></div>
       <div id="team"><TeamSection /></div>
       <div id="contact"><Contact /></div>
     </div>
