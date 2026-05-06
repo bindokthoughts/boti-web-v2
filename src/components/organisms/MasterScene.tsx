@@ -23,10 +23,10 @@ const MasterScene = () => {
         }}
         eventSource={typeof document !== 'undefined' ? (document.body as HTMLElement) : undefined}
         camera={{ position: [0, 0, 15], fov: 75 }}
-        gl={{ 
-          antialias: true, 
-          alpha: true, 
-          stencil: true, 
+        gl={{
+          antialias: true,
+          alpha: true,
+          stencil: true,
           depth: true,
           powerPreference: "high-performance",
           preserveDrawingBuffer: true
@@ -38,7 +38,7 @@ const MasterScene = () => {
 
         {/* Global background particles */}
         <ParticleField />
-        
+
         {/* Morphing scroll-reactive particles */}
         <MorphingParticles />
 

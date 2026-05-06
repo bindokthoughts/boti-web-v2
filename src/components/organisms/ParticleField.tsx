@@ -26,8 +26,8 @@ const ParticleField = () => {
 
   React.useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      mouse.current.x = (e.clientX / window.innerWidth - 0.5) * 2;
-      mouse.current.y = -(e.clientY / window.innerHeight - 0.5) * 2;
+      mouse.current.x = (e.clientX / window.innerWidth - 0.5) * 0.5;
+      mouse.current.y = -(e.clientY / window.innerHeight - 0.5) * 0.5;
     };
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
@@ -42,14 +42,14 @@ const ParticleField = () => {
     const my = state.mouse.y !== 0 ? state.mouse.y : mouse.current.y;
 
     if (pointsRef.current) {
-      const targetRotationY = time * 0.05 + (mx * 0.1);
-      const targetRotationX = -my * 0.5;
+      const targetRotationY = time * 0.05 + (mx * 0.005);
+      const targetRotationX = -my * 0.005;
 
-      pointsRef.current.rotation.x = THREE.MathUtils.lerp(pointsRef.current.rotation.x, targetRotationX, 0.1);
-      pointsRef.current.rotation.y = THREE.MathUtils.lerp(pointsRef.current.rotation.y, targetRotationY, 0.1);
+      pointsRef.current.rotation.x = THREE.MathUtils.lerp(pointsRef.current.rotation.x, targetRotationX, 0.05);
+      pointsRef.current.rotation.y = THREE.MathUtils.lerp(pointsRef.current.rotation.y, targetRotationY, 0.05);
 
-      pointsRef.current.position.x = THREE.MathUtils.lerp(pointsRef.current.position.x, mx * 1.5, 0.05);
-      pointsRef.current.position.y = THREE.MathUtils.lerp(pointsRef.current.position.y, my * 1, 0.05);
+      pointsRef.current.position.x = THREE.MathUtils.lerp(pointsRef.current.position.x, mx * 0.5, 0.02);
+      pointsRef.current.position.y = THREE.MathUtils.lerp(pointsRef.current.position.y, my * 0.5, 0.02);
     }
   });
 

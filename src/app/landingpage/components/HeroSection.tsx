@@ -47,14 +47,14 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ heroTextRef }, 
             <Sparkles size={14} className="text-primary" />
             A browser that's bigger on the inside.
           </div>
-          <div ref={heroTextRef} className="flex justify-center mix-blend-difference">
+          <div ref={heroTextRef} className="flex justify-center mix-blend-difference w-[80vw] max-w-[800px] mx-auto">
             <Image
               src={LogoTypo}
               alt="BOTI"
-              width={800}
-              height={600}
-              style={{ height: 'auto' }}
-              className="w-[80vw] max-w-[800px] h-auto object-contain pointer-events-none select-none"
+              width={847}
+              height={386}
+              style={{ width: '100%', height: 'auto' }}
+              className="object-contain pointer-events-none select-none"
               priority
             />
           </div>
