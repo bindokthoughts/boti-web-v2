@@ -42,10 +42,10 @@ const ParticleField = () => {
     const my = state.mouse.y !== 0 ? state.mouse.y : mouse.current.y;
 
     if (pointsRef.current) {
-      const targetRotationY = time * 0.05 + (mx * 0.005);
+      const targetRotationY = time * 0.025 + (mx * 0.005);
       const targetRotationX = -my * 0.005;
 
-      pointsRef.current.rotation.x = THREE.MathUtils.lerp(pointsRef.current.rotation.x, targetRotationX, 0.05);
+      pointsRef.current.rotation.x = THREE.MathUtils.lerp(pointsRef.current.rotation.x, targetRotationX, 0.025);
       pointsRef.current.rotation.y = THREE.MathUtils.lerp(pointsRef.current.rotation.y, targetRotationY, 0.05);
 
       pointsRef.current.position.x = THREE.MathUtils.lerp(pointsRef.current.position.x, mx * 0.5, 0.02);
@@ -62,7 +62,7 @@ const ParticleField = () => {
         sizeAttenuation={true}
         depthWrite={false}
         blending={THREE.AdditiveBlending}
-        opacity={0.8}
+        opacity={0.75}
       />
     </Points>
   );

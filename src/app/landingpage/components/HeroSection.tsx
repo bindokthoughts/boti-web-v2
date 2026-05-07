@@ -29,7 +29,7 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ heroTextRef }, 
   return (
     <section ref={ref} className="hero-section min-h-[150vh] flex flex-col items-center justify-center relative px-6 py-32 overflow-hidden bg-background">
       {/* Background Image Layer */}
-      <div className="absolute inset-0 z-0 opacity-40">
+      <div className="absolute inset-0 z-0 opacity-10">
         <Image
           src="/images/hero-spatial.png"
           alt="Spatial Web Background"

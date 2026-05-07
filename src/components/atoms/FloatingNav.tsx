@@ -56,7 +56,7 @@ export default function FloatingNav({ sections }: FloatingNavProps) {
   };
 
   return (
-    <div className="fixed right-6 top-1/2 -translate-y-1/2 z-[100] hidden md:flex flex-col gap-1">
+    <div className="fixed right-6 top-1/2 -translate-y-1/2 z-[100] hidden md:flex flex-col">
       {sections.map(({ id, label }) => (
         <button
           key={id}
