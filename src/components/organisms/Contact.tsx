@@ -62,10 +62,10 @@ const Contact: React.FC = () => {
 
         <form className="w-full flex flex-col gap-4 contact-form" onSubmit={(e) => e.preventDefault()}>
           <div className="form-element">
-            <Input type="text" placeholder="Enter your name" />
+            <Input type="text" placeholder="Enter your name" className='backdrop-blur-sm' />
           </div>
           <div className="form-element">
-            <Input type="email" placeholder="Enter your email" />
+            <Input type="email" placeholder="Enter your email" className='backdrop-blur-sm' />
           </div>
           <div className="form-element">
             <Select
@@ -75,10 +75,11 @@ const Contact: React.FC = () => {
                 { label: "Partnership", value: "partnership" },
                 { label: "Support", value: "support" }
               ]}
+              className='backdrop-blur-sm'
             />
           </div>
           <div className="form-element">
-            <Textarea placeholder="Enter your message" />
+            <Textarea placeholder="Enter your message" className='backdrop-blur-sm' />
           </div>
           <div className="form-element pt-2">
             <Button variant="primary" size="lg" className="w-full text-lg py-6 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-[0_0_20px_rgba(37,99,235,0.4)] border-none">
