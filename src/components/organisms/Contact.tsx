@@ -54,10 +54,10 @@ const Contact: React.FC = () => {
   return (
     <section ref={containerRef} className="relative py-32 px-6 md:px-16 overflow-hidden flex items-center justify-center min-h-screen">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/20 blur-[150px] rounded-full bg-glow opacity-30 -z-10" />
-      
+
       <div className="w-full max-w-xl mx-auto flex flex-col items-center gap-10 contact-content relative z-10">
         <Text variant="h2" className="font-bold text-5xl md:text-6xl text-center text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-          Contact Us Form
+          Contact Us
         </Text>
 
         <form className="w-full flex flex-col gap-4 contact-form" onSubmit={(e) => e.preventDefault()}>
@@ -68,13 +68,13 @@ const Contact: React.FC = () => {
             <Input type="email" placeholder="Enter your email" />
           </div>
           <div className="form-element">
-            <Select 
-              placeholder="Select a purpose"
+            <Select
+              placeholder="Subject"
               options={[
                 { label: "General Inquiry", value: "general" },
                 { label: "Partnership", value: "partnership" },
                 { label: "Support", value: "support" }
-              ]} 
+              ]}
             />
           </div>
           <div className="form-element">

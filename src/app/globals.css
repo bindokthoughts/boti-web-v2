@@ -100,7 +100,8 @@
   }
 
   /* Ensure interactive elements still show something or handle them specifically */
-  a, button {
+  a,
+  button {
     cursor: none;
   }
 }
@@ -109,13 +110,20 @@
   .translate-z-\[-4px\] {
     transform: translateZ(-4px);
   }
+
   .translate-z-\[-8px\] {
     transform: translateZ(-8px);
   }
 }
 
 @layer base {
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-bold tracking-tight;
   }
 
@@ -129,7 +137,7 @@
   .glass {
     @apply backdrop-blur-2xl bg-[var(--glass-bg)] border border-[var(--glass-border)];
   }
-  
+
   .premium-card {
     @apply glass rounded-[2rem] p-8 md:p-10 transition-all duration-500;
     box-shadow: var(--card-shadow);
@@ -166,8 +174,15 @@
 
 /* Animations */
 @keyframes subtle-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .animate-float {

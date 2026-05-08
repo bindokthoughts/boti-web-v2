@@ -27,7 +27,7 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ heroTextRef }, 
   });
 
   return (
-    <section ref={ref} className="hero-section min-h-[150vh] flex flex-col items-center justify-center relative px-6 py-32 overflow-hidden bg-background">
+    <section ref={ref} className="hero-section min-h-[100vh] flex flex-col items-center justify-center relative px-6 py-32 overflow-hidden bg-background">
       {/* Background Image Layer */}
       <div className="absolute inset-0 z-0 opacity-10">
         <Image
@@ -41,9 +41,9 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ heroTextRef }, 
         <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
       </div>
 
-      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center z-10">
+      <div className="sticky top-0 w-full flex flex-col items-center justify-center z-10">
         <div className="text-center space-y-8 hero-boti">
-          <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-primary/20 text-foreground/40 font-semibold text-xs tracking-[0.2em] uppercase bg-primary/[0.03] backdrop-blur-sm">
+          <div className="inline-flex items-center gap-3 px-6 py-6 rounded-full border border-primary/20 text-foreground/40 font-semibold text-s tracking-[0.2em] uppercase bg-primary/[0.03] backdrop-blur-sm">
             <Sparkles size={14} className="text-primary" />
             A browser that's bigger on the inside.
           </div>
@@ -53,7 +53,7 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ heroTextRef }, 
               alt="BOTI"
               width={847}
               height={386}
-              style={{ width: '100%', height: 'auto' }}
+              style={{ width: '60%', height: 'auto' }}
               className="object-contain pointer-events-none select-none"
               priority
             />
