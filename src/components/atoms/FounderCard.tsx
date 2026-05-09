@@ -42,37 +42,44 @@ export default function FounderCard({
   corporateLogo,
 }: FounderCardProps) {
   return (
-    <div className="premium-card flex flex-col gap-10 founder-card">
-      <div className="aspect-square w-full rounded-2xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
-        <img
-          src={image}
-          alt={name}
-          className="w-full h-full object-cover"
-        />
-      </div>
+    <div className="relative rounded-[2.5rem] overflow-hidden group founder-card hover:-translate-y-4 transition-all duration-500 shadow-2xl shadow-black/50">
+      {/* Background Hover Effects */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div className="absolute inset-0 rounded-[2.5rem] border border-white/10 group-hover:border-primary/30 transition-colors duration-500 pointer-events-none z-20" />
 
-      <div className="space-y-6 flex-1 flex flex-col justify-between">
-        <div>
-          <div className="space-y-2 mb-6">
-            <Text variant="h4" className="text-2xl">{name}</Text>
-            <div className="flex items-center gap-2 text-primary font-bold uppercase tracking-widest text-xs">
-              {icon}
-              {role}
-            </div>
-          </div>
-          <div className="space-y-4">
-            <Text variant="p" className="font-bold" opacity={0.8}>{tagline}</Text>
-            <Text variant="p" className="whitespace-pre-line" opacity={0.7}>{description}</Text>
-          </div>
+      {/* Content Layer with Glass Effect */}
+      <div className="relative h-full w-full bg-background/40 backdrop-blur-xl flex flex-col gap-10 p-8 md:p-10 z-10">
+        <div className="aspect-square w-full rounded-2xl overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
+          <img
+            src={image}
+            alt={name}
+            className="w-full h-full object-cover"
+          />
         </div>
 
-        <div className="flex items-center justify-between pt-6 border-t border-[var(--glass-border)] mt-6">
-          <a href={linkedin} target="_blank" rel="noopener noreferrer" className="text-foreground/50 hover:text-primary transition-colors">
-            <LinkedinIcon size={24} />
-          </a>
-          {corporateLogo && (
-            <img src={corporateLogo} alt={`${name}'s company logo`} className="h-8 max-w-[200px] object-contain opacity-70 grayscale hover:grayscale-0 transition-all duration-300" />
-          )}
+        <div className="space-y-6 flex-1 flex flex-col justify-between">
+          <div>
+            <div className="space-y-2 mb-6">
+              <Text variant="h4" className="text-2xl">{name}</Text>
+              <div className="flex items-center gap-2 text-primary font-bold uppercase tracking-widest text-xs">
+                {icon}
+                {role}
+              </div>
+            </div>
+            <div className="space-y-4">
+              <Text variant="p" className="font-bold" opacity={0.8}>{tagline}</Text>
+              <Text variant="p" className="whitespace-pre-line" opacity={0.7}>{description}</Text>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between pt-6 border-t border-[var(--glass-border)] mt-6 relative z-30">
+            <a href={linkedin} target="_blank" rel="noopener noreferrer" className="text-foreground/50 hover:text-primary transition-colors pointer-events-auto">
+              <LinkedinIcon size={24} />
+            </a>
+            {corporateLogo && (
+              <img src={corporateLogo} alt={`${name}'s company logo`} className="h-8 max-w-[200px] object-contain opacity-70 grayscale group-hover:grayscale-0 transition-all duration-300" />
+            )}
+          </div>
         </div>
       </div>
     </div>

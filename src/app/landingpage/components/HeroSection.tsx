@@ -43,9 +43,9 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ heroTextRef }, 
 
       <div className="sticky top-0 w-full flex flex-col items-center justify-center z-10">
         <div className="text-center space-y-8 hero-boti">
-          <div className="inline-flex items-center gap-3 px-6 py-6 rounded-full border border-primary/20 text-foreground/40 font-semibold text-s tracking-[0.2em] uppercase bg-primary/[0.03] backdrop-blur-sm">
+          <div className="lowercase inline-flex items-center gap-3 px-6 py-6 rounded-full border border-primary/20 text-foreground/40 font-medium text-md tracking-[0.2em] bg-primary/[0.03] backdrop-blur-sm">
             <Sparkles size={14} className="text-primary" />
-            A browser that's bigger on the inside.
+            A browser that's bigger on the inside
           </div>
           <div ref={heroTextRef} className="flex justify-center mix-blend-difference w-[80vw] max-w-[800px] mx-auto">
             <Image
@@ -59,7 +59,7 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ heroTextRef }, 
             />
           </div>
           <div className="reveal-subtext">
-            <Text variant="p" className="italic" opacity={0.3}>"It's pronounced BODHI"</Text>
+            <Text variant="p" opacity={0.3}>It's pronounced BODHI</Text>
           </div>
         </div>
       </div>

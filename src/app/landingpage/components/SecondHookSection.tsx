@@ -42,7 +42,7 @@ const SecondHookSection: React.FC = () => {
           </div>
           <div className="overflow-hidden reveal-bottom">
             <Text variant="p" opacity={0.4} className="italic max-w-2xl">
-              "Tech, culture, and behavior already crossed over. We live spatially now."
+              Tech, culture, and behavior already crossed over. We live spatially now.
             </Text>
           </div>
         </div>
