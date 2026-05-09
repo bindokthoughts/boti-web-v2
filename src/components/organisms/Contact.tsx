@@ -52,7 +52,7 @@ const Contact: React.FC = () => {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="relative py-32 px-6 md:px-16 overflow-hidden flex items-center justify-center min-h-screen">
+    <section ref={containerRef} className="relative py-24 px-6 md:px-16 overflow-hidden flex items-center justify-center min-h-screen">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/20 blur-[150px] rounded-full bg-glow opacity-30 -z-10" />
 
       <div className="w-full max-w-xl mx-auto flex flex-col items-center gap-10 contact-content relative z-10">

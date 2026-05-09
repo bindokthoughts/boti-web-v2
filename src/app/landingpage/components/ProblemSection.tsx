@@ -30,14 +30,14 @@ const ProblemSection: React.FC = () => {
 
           <div className="stat-card backdrop-blur-[2px] shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] rounded-[2rem] p-8 md:p-12 space-y-12 transition-all duration-500 hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.25)] hover:border-white/30">
             <Text variant="p" className="text-sm font-bold uppercase tracking-widest" opacity={0.6}>The Flat Web Is Losing Us:</Text>
-            <div className="grid grid-cols-2 gap-12">
+            <div className="grid gap-12">
               <div className="space-y-2">
-                <h2 className="text-4xl md:text-6xl font-black drop-shadow-lg text-foreground">91<span className="text-primary">%</span></h2>
+                <h2 className="text-4xl md:text-6xl font-bold drop-shadow-lg text-foreground">91<span className="text-primary">%</span></h2>
                 <Text className="font-bold uppercase text-sm tracking-widest" opacity={0.6}>Bounce rate</Text>
               </div>
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <h2 className="text-4xl md:text-6xl font-black drop-shadow-lg text-foreground">1.4<span className="text-primary">%</span></h2>
+                  <h2 className="text-4xl md:text-6xl font-bold drop-shadow-lg text-foreground">1.4<span className="text-primary">%</span></h2>
                   <Text variant="p" className="font-bold uppercase text-sm tracking-widest" opacity={0.6}>Avg. scroll depth</Text>
                 </div>
                 <div className="pt-2 border-t border-foreground/10">

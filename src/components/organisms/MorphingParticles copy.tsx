@@ -18,33 +18,16 @@ const MorphingParticles = () => {
 
   const count = 2000;
 
-  // Shape 1: Hexagon (2D flat with slight depth, shaped like the logo)
-  const hexagonPositions = useMemo(() => {
+  // Shape 1: Square (2D flat grid with slight depth)
+  const squarePositions = useMemo(() => {
     const pos = new Float32Array(count * 3);
-    const radius = 6;
+    const size = 10;
+    const side = Math.floor(Math.sqrt(count));
     for (let i = 0; i < count; i++) {
-      // Pick a random triangle slice out of 6
-      const slice = Math.floor(Math.random() * 6);
-      // Offset by 90 degrees (Math.PI / 2) to make it pointy-topped like the logo
-      const angle1 = (slice * Math.PI) / 3 + Math.PI / 2;
-      const angle2 = ((slice + 1) * Math.PI) / 3 + Math.PI / 2;
-
-      // Vertices of the triangle
-      const x1 = radius * Math.cos(angle1);
-      const y1 = radius * Math.sin(angle1);
-      const x2 = radius * Math.cos(angle2);
-      const y2 = radius * Math.sin(angle2);
-
-      // Random point in triangle
-      let r1 = Math.random();
-      let r2 = Math.random();
-      if (r1 + r2 > 1) {
-        r1 = 1 - r1;
-        r2 = 1 - r2;
-      }
-
-      pos[i * 3] = r1 * x1 + r2 * x2;
-      pos[i * 3 + 1] = r1 * y1 + r2 * y2;
+      const x = ((i % side) / side - 0.5) * size;
+      const y = (Math.floor(i / side) / side - 0.5) * size;
+      pos[i * 3] = x;
+      pos[i * 3 + 1] = y;
       pos[i * 3 + 2] = (Math.random() - 0.5) * 0.5; // Slight depth for texture
     }
     return pos;
@@ -141,14 +124,14 @@ const MorphingParticles = () => {
 
   // Collection of all shape frames
   const shapes = useMemo(() => [
-    hexagonPositions,
+    squarePositions,
     spherePositions,
     cubePositions,
     tesseractPositions
-  ], [hexagonPositions, spherePositions, cubePositions, tesseractPositions]);
+  ], [squarePositions, spherePositions, cubePositions, tesseractPositions]);
 
   // Current positions initialized to the first shape
-  const currentPositions = useMemo(() => new Float32Array(hexagonPositions), [hexagonPositions]);
+  const currentPositions = useMemo(() => new Float32Array(squarePositions), [squarePositions]);
 
   const mouse = useRef({ x: 0, y: 0 });
 
@@ -166,7 +149,7 @@ const MorphingParticles = () => {
     const obj = { progress: 0 };
 
     gsap.to(obj, {
-      progress: 3, // 0 = Hexagon, 1 = Sphere, 2 = Cube, 3 = Tesseract
+      progress: 3, // 0 = Square, 1 = Sphere, 2 = Cube, 3 = Tesseract
       scrollTrigger: {
         trigger: "#root-layout",
         start: "top top",
