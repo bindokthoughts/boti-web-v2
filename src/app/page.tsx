@@ -31,15 +31,15 @@ export default function LandingPage() {
     introTl.current = gsap.timeline({
       defaults: { ease: "expo.out", duration: 1.5 }
     })
-    .from(".hero-boti", {
-      scale: 1.5,
-      opacity: 0,
-      filter: "blur(20px)",
-      duration: 3,
-      ease: "power4.inOut",
-      immediateRender: false,
-      clearProps: "all"
-    });
+      .from(".hero-boti", {
+        scale: 1.5,
+        opacity: 0,
+        filter: "blur(20px)",
+        duration: 3,
+        ease: "power4.inOut",
+        immediateRender: false,
+        clearProps: "all"
+      });
     // 3. Section specific animations
     gsap.to(heroTextRef.current, {
       scale: 1.2,
@@ -102,7 +102,7 @@ export default function LandingPage() {
   return (
     <div ref={containerRef} className="flex flex-col relative">
       <FloatingNav sections={LANDING_SECTIONS} />
-      
+
       <div id="hero"><HeroSection heroTextRef={heroTextRef} /></div>
       <div id="product"><ProductSection /></div>
       <div id="problem"><ProblemSection /></div>

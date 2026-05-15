@@ -67,7 +67,7 @@ const ProductSection: React.FC = () => {
             </Text>
           </div>
           <div className="mt-8 pt-4">
-            <h2 className="text-5xl md:text-8xl text-primary font-extrabold step-inside drop-shadow-2xl animate-glow">
+            <h2 className="text-4xl md:text-8xl text-primary font-extrabold step-inside drop-shadow-2xl animate-glow">
               Step inside the web.
             </h2>
           </div>

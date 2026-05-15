@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
   }, { scope: footerRef });
 
   return (
-    <footer ref={footerRef} className="pb-12 px-6 md:px-16 border-t border-[var(--glass-border)] bg-foreground/[0.01]">
+    <footer ref={footerRef} className="p-12 px-6 md:px-16 border-t border-[var(--glass-border)] bg-foreground/[0.01]">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 footer-content">
         <Logo />
         <Text variant="span" className="text-foreground/30 text-sm font-medium tracking-tight">
