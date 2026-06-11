@@ -14,36 +14,36 @@ if (typeof window !== 'undefined') {
 const honeycombItems: HoneycombItem[] = [
   {
     id: '1',
-    src: '/images/honeycomb-1.png',
-    type: 'image',
+    src: '/videos/video_001.mp4',
+    type: 'video',
     title: 'Minimalist Spatial Shelf',
     description: 'A cozy 3D spatial setup displaying luxury products. Lighting, depth, and shadow create a tactile, real-world shopping experience.',
   },
   {
     id: '2',
-    src: '/images/honeycomb-2.png',
+    src: '/images/image_001.jpeg',
     type: 'image',
     title: 'Botanical Walkthrough',
     description: 'Walk through a digital greenhouse with stone paths and climbing ivy. Experiences feel organic and alive.',
   },
   {
     id: '3',
-    src: '/images/honeycomb-3.png',
-    type: 'image',
+    src: '/videos/video_002.mp4',
+    type: 'video',
     title: 'Interactive Boutique',
     description: 'Items on shelves come to life. Interact directly instead of scrolling through long flat list pages.',
   },
   {
     id: '4',
-    src: '/images/honeycomb-2.png', // Reuse honeycomb-2 as instructed to avoid extra generation
-    type: 'image',
+    src: '/videos/video_003.mp4',
+    type: 'video',
     title: 'Luminous Wellness Studio',
     description: 'Natural design materials bathed in warm atmospheric lighting. Spatial spaces enhance user engagement and retention.',
   },
   {
     id: '5',
-    src: '/images/honeycomb-3.png', // Reuse honeycomb-3 as instructed
-    type: 'image',
+    src: '/videos/video_003.mp4',
+    type: 'video',
     title: 'Artisanal Pottery Showroom',
     description: 'Exquisite physical crafts displayed in a virtual studio gallery, bringing sensory richness directly to the browser.',
   },
