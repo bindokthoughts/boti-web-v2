@@ -24,6 +24,30 @@ const BaseLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     }
   }, []);
 
+  useEffect(() => {
+    if (isLoading) {
+      // Disable scrolling while loading
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    } else {
+      // Restore scrolling and force top of the page when loaded
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }
+
+    return () => {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    };
+  }, [isLoading]);
+
+
   return (
     <>
       <AnimatePresence>

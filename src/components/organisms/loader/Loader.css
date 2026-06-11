@@ -16,7 +16,7 @@
   z-index: 9999;
 }
 
-/* Loader container - perfect centering */
+/* Loader container */
 .loader-container {
   position: absolute;
   top: 0;
@@ -24,12 +24,27 @@
   right: 0;
   bottom: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 2.5rem;
   background: #1A1A1A;
   color: white;
   overflow: hidden;
 }
+
+@media (min-width: 640px) {
+  .loader-container {
+    padding: 4rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .loader-container {
+    padding: 5rem;
+  }
+}
+
 
 /* Content wrapper - vertical layout */
 .loader-content {

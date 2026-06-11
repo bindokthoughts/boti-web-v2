@@ -107,7 +107,7 @@ export default function LandingPage() {
       <div id="product"><ProductSection /></div>
       <div id="problem"><ProblemSection /></div>
       <div id="solution"><OurSolutionSection /></div>
-      <div id="team"><TeamSection /></div>
+      {/* <div id="team"><TeamSection /></div> */}
       <div id="contact"><Contact /></div>
     </div>
   );

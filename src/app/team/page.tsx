@@ -21,7 +21,9 @@ export default function TeamPage() {
 
 
   useGSAP(() => {
+    // Initialize timeline as paused so we can control it based on starting scroll position
     introTl.current = gsap.timeline({
+      paused: true,
       defaults: { ease: "expo.out", duration: 1.5 }
     })
       .from(".team-reveal", {
@@ -39,29 +41,35 @@ export default function TeamPage() {
         clearProps: "all"
       }, "-=0.8");
 
-    // Scroll reversal logic: 
-    // Reverses the intro when scrolling past the hero area (800px), 
-    // plays it back when returning to the very top
+    // Scroll trigger to play/reverse timeline based on scroll position
     ScrollTrigger.create({
       trigger: containerRef.current,
       start: "top top",
       end: 800,
       onLeave: () => introTl.current?.reverse(),
       onEnterBack: () => introTl.current?.play(),
+      onEnter: () => introTl.current?.play(),
       onRefresh: (self) => {
-        if (self.progress === 0) introTl.current?.play();
+        // Handle page refresh/reload when already scrolled
+        if (self.scroll() < 800) {
+          introTl.current?.play();
+        } else {
+          introTl.current?.progress(0).pause();
+        }
       }
     });
 
-    // Button reveal
-    gsap.from(".join-btn", {
-      scale: 0.8,
-      opacity: 0,
-      scrollTrigger: {
-        trigger: ".join-btn",
-        start: "top 90%",
-      }
-    });
+    // Button reveal (only animate if the button is present in the DOM)
+    if (containerRef.current?.querySelector('.join-btn')) {
+      gsap.from(".join-btn", {
+        scale: 0.8,
+        opacity: 0,
+        scrollTrigger: {
+          trigger: ".join-btn",
+          start: "top 90%",
+        }
+      });
+    }
 
   }, { scope: containerRef });
 
@@ -87,11 +95,11 @@ export default function TeamPage() {
             ))}
           </div>
 
-          <div className="pt-24 text-center join-btn">
+          {/* <div className="pt-24 text-center join-btn">
             <Button variant="primary" size="lg">
               "Join the Revolution"
             </Button>
-          </div>
+          </div> */}
         </div>
       </div>
       <div id="contact"><Contact /></div>

@@ -8,7 +8,6 @@ import Simulated_Logo from "@/assets/images/partner_logos/Simulated_Logo.png";
 
 // Messages to cycle through
 const messages = [
-    "SIMULATED SYSTEMS INC.",
     "HUMAN-FIRST APPLICATIONS",
     "FOR SIMULATED WORLDS",
     "BOOTING BOTI BROWSER...",
@@ -22,110 +21,132 @@ interface LoaderProps {
 }
 
 export default function Loader({ isLoaded = false, onComplete }: LoaderProps) {
-    const [displayText, setDisplayText] = useState("");
-    const [messageIndex, setMessageIndex] = useState(0);
-    const [line1Done, setLine1Done] = useState(false);
+    const [currentLineIndex, setCurrentLineIndex] = useState(0);
+    const [currentCharIndex, setCurrentCharIndex] = useState(0);
+    // const [dateStr, setDateStr] = useState("MAY 2026");
 
     const isLoadedRef = useRef(isLoaded);
     useEffect(() => {
         isLoadedRef.current = isLoaded;
     }, [isLoaded]);
 
-    const line1 = "HUMAN-FIRST APPLICATIONS  FOR SIMULATED WORLDS";
+    const loaderLines = [
+        "SIMULATED SYSTEMS INC.",
+        "HUMAN-FIRST APPLICATIONS",
+        "FOR SIMULATED WORLDS",
+        "BOOTING BOTI BROWSER...",
+        "INITIALIZING PRESENCE ENGINE...",
+        "MAPPING SPATIAL LAYER...",
+    ];
 
-    // Typing for line1
+    // Typing effect for sequential lines
     useEffect(() => {
-        let i = 0;
-        if (!line1Done) {
+        if (currentLineIndex >= loaderLines.length) {
+            // All lines have finished typing. If the page is loaded, finish loader.
+            if (isLoadedRef.current) {
+                const timeout = setTimeout(() => {
+                    if (onComplete) onComplete();
+                }, 335); // short delay after loading completes
+                return () => clearTimeout(timeout);
+            }
+            return;
+        }
+
+        const currentLine = loaderLines[currentLineIndex];
+
+        if (currentLine === "") {
+            // Spacer line: immediately advance to next line with a brief delay
+            const timeout = setTimeout(() => {
+                setCurrentLineIndex((prev) => prev + 1);
+                setCurrentCharIndex(0);
+            }, 150);
+            return () => clearTimeout(timeout);
+        }
+
+        if (currentCharIndex < currentLine.length) {
+            // Speed up header info lines vs action log lines
+            const delay = currentLineIndex < 5 ? 15 : 20;
             const interval = setInterval(() => {
-                setDisplayText(line1.slice(0, i + 1));
-                i++;
-                if (i === line1.length) {
-                    clearInterval(interval);
-                    setTimeout(() => setLine1Done(true), 1000);
-                }
-            }, 50);
+                setCurrentCharIndex((prev) => prev + 1);
+            }, delay);
             return () => clearInterval(interval);
-        }
-    }, [line1Done]);
+        } else {
+            // Line typing is complete, wait a bit before starting the next line
+            let delay = 200;
+            if (currentLineIndex === 4) {
+                delay = 650; // delay after date header before logs start
+            } else if (currentLine.endsWith("...")) {
+                delay = 650; // delay after boot logs for terminal simulation feel
+            }
 
-    // Typing for rotating messages
-    useEffect(() => {
-        if (line1Done) {
-            let i = 0;
-            let interval: NodeJS.Timeout;
-            const showMessage = () => {
-                const current = messages[messageIndex];
-                interval = setInterval(() => {
-                    setDisplayText(current.slice(0, i + 1));
-                    i++;
-                    if (i === current.length) {
-                        clearInterval(interval);
-                        setTimeout(() => {
-                            // If we finished the last message AND the app is loaded, complete the timeline
-                            if (messageIndex === messages.length - 1 && isLoadedRef.current) {
-                                if (onComplete) onComplete();
-                            } else {
-                                i = 0;
-                                setMessageIndex((prev) => (prev + 1) % messages.length);
-                                showMessage();
-                            }
-                        }, 2000); // wait before replacing
-                    }
-                }, 50);
-            };
-            showMessage();
-            return () => clearInterval(interval);
+            const timeout = setTimeout(() => {
+                setCurrentLineIndex((prev) => prev + 1);
+                setCurrentCharIndex(0);
+            }, delay);
+            return () => clearTimeout(timeout);
         }
-    }, [line1Done, messageIndex]);
+    }, [currentLineIndex, currentCharIndex, isLoaded]);
 
     return (
-        <div className="loader_div flex flex-col items-center justify-center h-screen bg-[#1A1A1A] text-white font-['Press_Start_2P'] overflow-hidden">
-            {/* Floating + vibrating logo */}
-            <motion.div
-                animate={{
-                    //   y: [0, -3, 0], // float
-                    x: [0, -1, 1, -1, 1, 0, -1, 0, 1, -1, 0 - 2], // jitter
-                }}
-                transition={{
-                    repeat: Infinity,
-                    duration: 1.5,
-                    ease: "easeInOut",
-                }}
-                className="mb-8"
-            >
-                <Image
-                    src={Simulated_Logo} // replace with your logo
-                    alt="Logo"
-                    // width='auto'
-                    height={200}
-                    priority
-                />
-            </motion.div>
+        <div className="loader-wrapper">
+            {/* CRT scan lines and noise overlays */}
+            <div className="static-noise-overlay" />
 
-            {/* Glitch Text with Typing Effect */}
-            <motion.div
-                key={displayText} // re-trigger animation each update
-                initial={{ opacity: 0.8 }}
-                animate={{
-                    opacity: [1, 0.7, 1],
-                    x: [0, -1, 1, -2, 2, 0],
-                }}
-                transition={{
-                    repeat: Infinity,
-                    duration: 0.15,
-                }}
-                className="relative text-center text-sm md:text-base glitch-text"
-            >
-                {displayText}
-                {/* Red/Blue glitch shadows */}
-                <span className="absolute top-0 left-0 w-full h-full text-red-500 opacity-60 blur-sm translate-x-1 glitch-layer">
-                    {displayText}
-                </span>
-                <span className="absolute top-0 left-0 w-full h-full text-cyan-500 opacity-60 blur-sm -translate-x-1 glitch-layer">
-                    {displayText}
-                </span>
-            </motion.div>
+            <div className="loader-container">
+                {/* Floating + vibrating logo */}
+                <motion.div
+                    animate={{
+                        x: [0, -1, 1, -1, 1, 0, -1, 0, 1, -1, 0, -2], // jitter
+                    }}
+                    transition={{
+                        repeat: Infinity,
+                        duration: 1.5,
+                        ease: "easeInOut",
+                    }}
+                    className="logo-container"
+                >
+                    <Image
+                        src={Simulated_Logo}
+                        alt="Logo"
+                        height={100}
+                        style={{ height: "auto", width: "auto" }}
+                        priority
+                    />
+                </motion.div>
+
+                {/* Left-aligned lines */}
+                <div className="flex flex-col text-left font-['Press_Start_2P'] uppercase text-[#F5F5F5]">
+                    {loaderLines.map((line, index) => {
+                        if (index > currentLineIndex) return null;
+
+                        const isCurrent = index === currentLineIndex;
+                        const isLastLine = index === loaderLines.length - 1;
+                        const isCompleted = index < currentLineIndex;
+
+                        const textToShow = isCurrent ? line.slice(0, currentCharIndex) : line;
+
+                        if (line === "") {
+                            return <div key={index} className="h-4 sm:h-6 md:h-8" />;
+                        }
+
+                        // Show cursor if this is the active typing line,
+                        // or if we've finished typing all lines and this is the last line.
+                        const showCursor = isCurrent || (isCompleted && isLastLine && currentLineIndex >= loaderLines.length);
+
+                        return (
+                            <div
+                                key={index}
+                                className="text-[10px] sm:text-xs md:text-sm tracking-wider leading-loose min-h-[1.5rem] flex items-center"
+                            >
+                                <span>{textToShow}</span>
+                                {showCursor && (
+                                    <span className="typing-cursor ml-2 font-mono">█</span>
+                                )}
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>
         </div>
     );
 }
