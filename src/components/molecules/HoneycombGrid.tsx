@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, Play, Maximize2 } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Play } from 'lucide-react';
 
 export interface HoneycombItem {
   id: string;
@@ -42,7 +42,7 @@ const HoneycombGrid: React.FC<HoneycombGridProps> = ({
   rowsConfig.forEach((count, r) => {
     // If r is odd, offset horizontally by 0.5 * D to nest in the gaps
     const offset = r % 2 === 1 ? 0.5 : 0;
-    
+
     for (let i = 0; i < count; i++) {
       if (itemIdx >= items.length) break;
       const x = (i + offset) * D;
@@ -107,19 +107,9 @@ const HoneycombGrid: React.FC<HoneycombGridProps> = ({
 
   return (
     <div className={`w-full relative flex items-center justify-center ${className}`}>
-      {/* Shared Gradient Defs for SVG Borders */}
-      <svg className="absolute w-0 h-0 pointer-events-none">
-        <defs>
-          <linearGradient id="hex-glow" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#00E0FF" />
-            <stop offset="50%" stopColor="#0046FF" />
-            <stop offset="100%" stopColor="#00E0FF" />
-          </linearGradient>
-        </defs>
-      </svg>
 
       {/* Honeycomb Grid Container */}
-      <div 
+      <div
         className="w-full relative select-none"
         style={{ aspectRatio: `${totalW} / ${totalH}` }}
       >
@@ -138,7 +128,7 @@ const HoneycombGrid: React.FC<HoneycombGridProps> = ({
             onClick={() => setActiveItemIndex(index)}
           >
             {/* Hexagon Wrapper with Clip-path and scaling hover */}
-            <div 
+            <div
               className="w-full h-full relative overflow-hidden transition-all duration-500 ease-out group-hover:scale-105 group-hover:z-20 active:scale-98 shadow-2xl"
               style={{
                 clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
@@ -157,7 +147,7 @@ const HoneycombGrid: React.FC<HoneycombGridProps> = ({
                     className="w-full h-full object-cover filter brightness-[0.85] contrast-[1.05]"
                   />
                   <div className="absolute top-4 left-4 bg-primary/20 backdrop-blur-md border border-primary/30 p-2 rounded-full text-white pointer-events-none">
-                    <Play size={14} className="fill-white" />
+                    <Play size={2} className="fill-white" />
                   </div>
                 </div>
               ) : (
@@ -168,35 +158,20 @@ const HoneycombGrid: React.FC<HoneycombGridProps> = ({
                 />
               )}
 
-              {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 md:p-8 pb-10 text-left">
-                <span className="text-accent text-[10px] tracking-widest uppercase font-extrabold mb-1">
-                  {item.type}
-                </span>
-                <h4 className="text-white text-base md:text-lg font-bold tracking-tight leading-tight">
-                  {item.title}
-                </h4>
-                <p className="text-foreground/75 text-xs mt-1.5 line-clamp-2 leading-relaxed">
-                  {item.description}
-                </p>
-                <div className="mt-3 inline-flex items-center gap-1.5 text-accent text-[10px] font-bold tracking-wider uppercase">
-                  <span>Explore Space</span>
-                  <Maximize2 size={10} />
-                </div>
-              </div>
+
             </div>
 
-            {/* Glowing Hexagon Border Overlay */}
-            <svg 
-              className="absolute inset-0 w-full h-full pointer-events-none opacity-20 group-hover:opacity-100 group-hover:scale-105 group-hover:drop-shadow-[0_0_15px_rgba(0,224,255,0.4)] transition-all duration-500 ease-out" 
-              viewBox="0 0 100 115.47" 
+            {/* White Hexagon Border Overlay */}
+            <svg
+              className="absolute inset-0 w-full h-full pointer-events-none opacity-100 group-hover:scale-105 group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.4)] transition-all duration-500 ease-out"
+              viewBox="0 0 100 115.47"
               preserveAspectRatio="none"
             >
-              <polygon 
-                points="50,0.8 99.2,29.2 99.2,86.2 50,114.6 0.8,86.2 0.8,29.2" 
-                fill="none" 
-                stroke="url(#hex-glow)" 
-                strokeWidth="1.8" 
+              <polygon
+                points="50,0.8 99.2,29.2 99.2,86.2 50,114.6 0.8,86.2 0.8,29.2"
+                fill="none"
+                stroke="#ffffff"
+                strokeWidth="0.25"
               />
             </svg>
           </div>
@@ -248,7 +223,7 @@ const HoneycombGrid: React.FC<HoneycombGridProps> = ({
               </button>
 
               {/* Media Visual */}
-              <div 
+              <div
                 className="w-full md:w-3/5 aspect-[4/3] rounded-[1.5rem] overflow-hidden border border-foreground/5 shadow-2xl relative"
                 style={{
                   clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
@@ -281,7 +256,7 @@ const HoneycombGrid: React.FC<HoneycombGridProps> = ({
                     {items[activeItemIndex].title}
                   </h3>
                 </div>
-                
+
                 <p className="text-foreground/80 text-base md:text-lg leading-relaxed font-medium">
                   {items[activeItemIndex].description}
                 </p>
@@ -290,7 +265,7 @@ const HoneycombGrid: React.FC<HoneycombGridProps> = ({
                   <span className="text-foreground/40 text-xs font-semibold uppercase tracking-wider">
                     Tile {activeItemIndex + 1} of {items.length}
                   </span>
-                  <button 
+                  <button
                     onClick={() => setActiveItemIndex(null)}
                     className="text-primary hover:text-accent font-bold text-sm tracking-wider uppercase transition-colors duration-300"
                   >

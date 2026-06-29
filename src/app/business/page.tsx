@@ -1,119 +1,112 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { TrendingUp, Rocket, Code, Layers } from 'lucide-react';
+import React, { useRef } from 'react';
+import { Smartphone } from 'lucide-react';
 import Text from '@/components/atoms/Text';
+import HoneycombGrid, { HoneycombItem } from '@/components/molecules/HoneycombGrid';
 import Contact from '@/components/organisms/Contact';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
+const honeycombItems: HoneycombItem[] = [
+  {
+    id: '1',
+    src: '/images/honeycomb-1.png',
+    type: 'image',
+    title: 'Immersive Business Microverse',
+    description: 'Provide your customers with an interactive 3D digital storefront they can walk and browse through.',
+  },
+  {
+    id: '2',
+    src: '/images/honeycomb-2.png',
+    type: 'image',
+    title: 'Unity-Powered Realism',
+    description: 'Leverage native real-time game engine rendering directly in standard mobile and desktop browsers.',
+  },
+  {
+    id: '3',
+    src: '/images/honeycomb-3.png',
+    type: 'image',
+    title: 'Sensory Customer Journeys',
+    description: 'Transform flat, dull grids into playful spatial experiences that multiply engagement and scroll depth.',
+  },
+];
 
 export default function BusinessPage() {
-  const strategyItems = [
-    {
-      title: "Immersive BOTI Pilot",
-      description: "We build custom 3D scenes for early brand partners",
-      icon: <Code className="w-6 h-6 text-primary" />,
-      tag: "Phase 01"
-    },
-    {
-      title: "BOTI Browser Launch",
-      description: "Public freemium + ad units & creation pipeline",
-      icon: <Rocket className="w-6 h-6 text-primary" />,
-      tag: "Phase 02"
-    },
-    {
-      title: "BOTI Builder Ecosystem",
-      description: "No-code tools + template library + SaaS subscriptions",
-      icon: <Layers className="w-6 h-6 text-primary" />,
-      tag: "Phase 03"
-    }
-  ];
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const stats = [
-    { label: "Target Partners", value: "500", unit: "+" },
-    { label: "Scene Templates", value: "2.5", unit: "k" },
-    { label: "User Retention", value: "85", unit: "%" },
-    { label: "Avg. Engagement", value: "12", unit: "min" }
-  ];
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      defaults: { ease: 'power4.out', duration: 1.2 }
+    });
+
+    // Elegant entrance animation timeline
+    tl.from('.icon-badge', {
+      scale: 0.6,
+      opacity: 0,
+      duration: 1,
+    })
+      .from('.quote-text', {
+        y: 60,
+        opacity: 0,
+        stagger: 0.15,
+      }, '-=0.6')
+      .from('.pill-badge', {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+      }, '-=0.6')
+      .from('.honeycomb-container', {
+        y: 60,
+        opacity: 0,
+        scale: 0.95,
+        duration: 1.4,
+      }, '-=1');
+
+  }, { scope: containerRef });
 
   return (
     <>
-      <div className="min-h-screen py-32 px-6 md:px-24">
-        <div className="max-w-7xl mx-auto space-y-32">
-          <header className="max-w-4xl space-y-8">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--glass-border)] text-primary text-xs font-bold uppercase tracking-widest bg-primary/[0.03]"
-            >
-              <TrendingUp size={14} />
-              "Our revenue engine is immersive, intelligent, and compounding."
-            </motion.div>
-            <Text variant="h2">
-              "Scale the<br />
-              <Text variant="span" opacity={0.3}>Immersive Economy"</Text>
-            </Text>
-          </header>
+      <div ref={containerRef} className="min-h-screen py-32 px-6 md:px-12 lg:px-24 flex items-center overflow-hidden relative">
+        {/* Background ambient glow */}
+        <div className="absolute top-1/2 left-3/4 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-primary/5 blur-[180px] rounded-full -z-10 pointer-events-none animate-pulse duration-10000" />
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {strategyItems.map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="premium-card space-y-12"
-              >
-                <div className="flex justify-between items-start">
-                  <div className="w-12 h-12 rounded-xl bg-primary/[0.08] border border-primary/10 flex items-center justify-center shadow-[0_0_20px_rgba(0,70,255,0.05)]">
-                    {item.icon}
-                  </div>
-                  <Text variant="span" className="text-[10px] font-bold uppercase tracking-widest" opacity={0.4}>{item.tag}</Text>
-                </div>
-                <div className="space-y-4">
-                  <Text variant="h4" className="text-2xl">{item.title}</Text>
-                  <Text opacity={0.6}>"{item.description}"</Text>
-                </div>
-              </motion.div>
-            ))}
+        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center z-10">
+          
+          {/* Left Column: Icon, Impactful Quote and Badge */}
+          <div className="lg:col-span-7 space-y-12 flex flex-col items-start text-left">
+            <div className="w-24 h-24 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center shadow-[0_0_50px_rgba(0,70,255,0.2)] icon-badge">
+              <Smartphone className="text-primary" size={40} strokeWidth={1.5} />
+            </div>
+
+            <Text variant="h2" className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-white drop-shadow-2xl quote-text">
+              We play video games to escape. <br />
+              <span className="text-primary/90 font-extrabold">Bring that experience to your business</span> <br />
+              and it becomes alive and fun.
+            </Text>
+
+            <div className="inline-flex items-center gap-4 px-6 py-3 rounded-full border border-primary/30 text-white font-bold text-xs tracking-widest uppercase bg-background/50 backdrop-blur-xl shadow-[0_0_30px_rgba(0,70,255,0.15)] pill-badge mt-4">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(0,70,255,0.8)]" />
+              Built in Unity. Works on any device. No headset required.
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="space-y-4"
-              >
-                <Text variant="span" className="text-xs font-bold uppercase tracking-widest" opacity={0.4}>{stat.label}</Text>
-                <div className="flex items-baseline gap-1">
-                  <Text variant="span" className="text-5xl md:text-7xl font-bold tracking-tighter">{stat.value}</Text>
-                  <Text variant="span" className="text-primary font-bold">{stat.unit}</Text>
-                </div>
-              </motion.div>
-            ))}
+          {/* Right Column: Honeycomb Grid Photo Cluster */}
+          <div className="lg:col-span-5 w-full flex items-center justify-center honeycomb-container">
+            <HoneycombGrid items={honeycombItems} rowsConfig={[2, 1]} gap={0} className="w-full max-w-[500px]" />
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="premium-card bg-foreground text-background p-12 md:p-24 rounded-[3rem] text-center space-y-12"
-          >
-            <Text variant="h2" className="text-3xl md:text-6xl text-background">
-              "We aren't building a tool.<br />
-              <span className="opacity-40">We're building the infrastructure."</span>
-            </Text>
-            <Text variant="p" className="text-background opacity-60 max-w-2xl mx-auto">
-              "The future of business isn't flat. It's spatial, interactive, and owned by the creators."
-            </Text>
-          </motion.div>
         </div>
       </div>
-      <div id="contact"><Contact /></div>
+
+      <div id="contact">
+        <Contact />
+      </div>
     </>
   );
 }

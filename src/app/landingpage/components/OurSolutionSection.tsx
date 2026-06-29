@@ -1,12 +1,13 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
-import { Globe, Box, Smartphone } from 'lucide-react';
-import Text from '@/components/atoms/Text';
+import { useRouter } from 'next/navigation';
+import { Globe, Box } from 'lucide-react';
 import SolutionCard from '@/components/atoms/SolutionCard';
 
 const OurSolutionSection: React.FC = () => {
+  const router = useRouter();
+
   return (
     <section className="min-h-screen py-32 px-6 md:px-12 lg:px-24 space-y-12 relative overflow-hidden">
 
@@ -33,6 +34,7 @@ const OurSolutionSection: React.FC = () => {
           icon={<Globe size={32} />}
           title="BOTI Browser"
           description="How users experience the web."
+          onClick={() => router.push('/ecosystem')}
         />
 
         {/* Builder Card */}
@@ -43,29 +45,8 @@ const OurSolutionSection: React.FC = () => {
           icon={<Box size={32} />}
           title="BOTI Builder"
           description="Makes it easy to create a 3D space for your business, no tech skills or big budgets required."
+          onClick={() => router.push('/ecosystem')}
         />
-      </div>
-
-      {/* Impactful Quote */}
-      <div className="max-w-6xl mx-auto text-center py-32 mt-24 feature-grid relative">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] h-[400px] bg-primary/10 blur-[150px] rounded-full -z-10 pointer-events-none" />
-
-        <div className="feature-card space-y-16 flex flex-col items-center">
-          <div className="w-24 h-24 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center shadow-[0_0_50px_rgba(0,70,255,0.2)]">
-            <Smartphone className="text-primary" size={40} strokeWidth={1.5} />
-          </div>
-
-          <Text variant="h2" className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] text-white drop-shadow-2xl">
-            We play video games to escape. <br className="hidden md:block" />
-            <span className="text-primary/90">Bring that experience to your business</span> <br className="hidden md:block" />
-            and it becomes alive and fun.
-          </Text>
-
-          <div className="inline-flex items-center gap-4 px-8 py-4 rounded-full border border-primary/30 text-white font-bold text-sm tracking-widest uppercase bg-background/50 backdrop-blur-xl shadow-[0_0_30px_rgba(0,70,255,0.15)] mt-8">
-            <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(0,70,255,0.8)]" />
-            Built in Unity. Works on any device. No headset required.
-          </div>
-        </div>
       </div>
     </section>
   );

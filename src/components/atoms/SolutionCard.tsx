@@ -9,6 +9,7 @@ export interface SolutionCardProps {
   title: string;
   description: string;
   className?: string;
+  onClick?: () => void;
 }
 
 const SolutionCard: React.FC<SolutionCardProps> = ({
@@ -18,9 +19,13 @@ const SolutionCard: React.FC<SolutionCardProps> = ({
   title,
   description,
   className = '',
+  onClick,
 }) => {
   return (
-    <div className={`relative rounded-[2.5rem] overflow-hidden group feature-card hover:-translate-y-4 transition-all duration-500 shadow-2xl shadow-black/50 ${className}`}>
+    <div
+      onClick={onClick}
+      className={`relative rounded-[2.5rem] overflow-hidden group feature-card hover:-translate-y-4 transition-all duration-500 shadow-2xl shadow-black/50 ${onClick ? 'cursor-pointer' : ''} ${className}`}
+    >
       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       <div className="absolute inset-0 rounded-[2.5rem] border border-white/10 group-hover:border-primary/30 transition-colors duration-500 pointer-events-none z-20" />
 
