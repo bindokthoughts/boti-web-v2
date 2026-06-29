@@ -45,8 +45,8 @@ export const founders = [
 export const LANDING_SECTIONS = [
   { id: 'hero', label: 'Hero' },
   { id: 'product', label: 'Product' },
-  { id: 'problem', label: 'Problem' },
+  // { id: 'problem', label: 'Problem' },
   { id: 'solution', label: 'Solution' },
-  { id: 'team', label: 'Team' },
+  // { id: 'team', label: 'Team' },
   { id: 'contact', label: 'Contact' },
 ];

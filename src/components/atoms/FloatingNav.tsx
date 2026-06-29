@@ -72,7 +72,7 @@ export default function FloatingNav({ sections }: FloatingNavProps) {
             className={`transition-all duration-300 ${activeSection === id ? 'scale-110 drop-shadow-[0_0_6px_rgba(var(--primary),0.8)]' : ''}`}
           >
             <div
-              className={`transition-all duration-300 bg-slate-300 [clip-path:polygon(50%_0%,100%_25%,100%_75%,50%_100%,0%_75%,0%_25%)] ${activeSection === id ? 'w-3 h-3' : 'w-2 h-2'}`}
+              className={`transition-all duration-300 bg-slate-300 [clip-path:polygon(50%_0%,100%_25%,100%_75%,50%_100%,0%_75%,0%_25%)] ${activeSection === id ? 'w-4 h-4' : 'w-3 h-3'}`}
             />
           </div>
         </button>
