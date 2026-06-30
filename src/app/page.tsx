@@ -19,14 +19,17 @@ import TeamSection from './landingpage/components/TeamSection';
 import Contact from '@/components/organisms/Contact';
 import FloatingNav from '@/components/atoms/FloatingNav';
 import { LANDING_SECTIONS } from '@/lib/data';
+import { useLoading } from '@/components/templates/BaseLayout';
 
 export default function LandingPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroTextRef = useRef<HTMLDivElement>(null);
+  const { isLoading } = useLoading();
 
   const introTl = useRef<gsap.core.Timeline | null>(null);
 
   useGSAP(() => {
+    if (isLoading) return;
     // 1. Entrance Animation Timeline
     introTl.current = gsap.timeline({
       defaults: { ease: "expo.out", duration: 1.5 }
@@ -97,7 +100,7 @@ export default function LandingPage() {
       });
     });
 
-  }, { scope: containerRef });
+  }, { dependencies: [isLoading], scope: containerRef });
 
   return (
     <div ref={containerRef} className="flex flex-col relative">

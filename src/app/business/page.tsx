@@ -77,7 +77,7 @@ export default function BusinessPage() {
         <div className="absolute top-1/2 left-3/4 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-primary/5 blur-[180px] rounded-full -z-10 pointer-events-none animate-pulse duration-10000" />
 
         <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center z-10">
-          
+
           {/* Left Column: Icon, Impactful Quote and Badge */}
           <div className="lg:col-span-7 space-y-12 flex flex-col items-start text-left">
             <div className="w-24 h-24 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center shadow-[0_0_50px_rgba(0,70,255,0.2)] icon-badge">
@@ -90,7 +90,7 @@ export default function BusinessPage() {
               and it becomes alive and fun.
             </Text>
 
-            <div className="inline-flex items-center gap-4 px-6 py-3 rounded-full border border-primary/30 text-white font-bold text-xs tracking-widest uppercase bg-background/50 backdrop-blur-xl shadow-[0_0_30px_rgba(0,70,255,0.15)] pill-badge mt-4">
+            <div className="inline-flex items-center gap-4 px-6 py-3 rounded-full border border-primary/30 text-white font-normal text-lg tracking-widest bg-background/50 backdrop-blur-xl shadow-[0_0_30px_rgba(0,70,255,0.15)] pill-badge mt-4">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(0,70,255,0.8)]" />
               Built in Unity. Works on any device. No headset required.
             </div>

@@ -24,13 +24,13 @@ const HookSection: React.FC = () => {
       skewY: 7,
       duration: 1.5,
     })
-    // Animate Subtext items
-    .from(subtextItems.current, {
-      y: 20,
-      opacity: 0,
-      stagger: 0.1,
-      duration: 0.8,
-    }, "-=0.8");
+      // Animate Subtext items
+      .from(subtextItems.current, {
+        y: 20,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.8,
+      }, "-=0.8");
 
   }, { scope: container });
 

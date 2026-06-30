@@ -109,23 +109,23 @@ const Navbar: React.FC = () => {
           </NavLink>
         ))}
 
-        <button
+        {/* <button
           onClick={toggleTheme}
           className="p-2.5 rounded-xl border border-[var(--glass-border)] hover:bg-foreground/5 transition-all ml-4"
           aria-label="Toggle Theme"
         >
           {isDarkMode ? <Sun size={24} className="text-primary" /> : <Moon size={16} className="text-primary" />}
-        </button>
+        </button> */}
       </div>
 
       {/* Mobile Nav Trigger */}
       <div className="flex items-center gap-4 md:hidden relative z-[100]">
-        <button
+        {/* <button
           onClick={toggleTheme}
           className="p-2 rounded-lg border border-[var(--glass-border)]"
         >
           {isDarkMode ? <Sun size={18} className="text-primary" /> : <Moon size={18} className="text-primary" />}
-        </button>
+        </button> */}
         <button
           className="text-foreground p-2"
           onClick={() => setIsMenuOpen(!isMenuOpen)}

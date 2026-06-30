@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext, useContext } from 'react';
 import Navbar from '../organisms/Navbar';
 import Footer from '../organisms/Footer';
 
@@ -8,6 +8,14 @@ import MasterScene from '../organisms/MasterScene';
 import CustomCursor from '../atoms/CustomCursor';
 import Loader from '../organisms/loader/Loader';
 import { AnimatePresence, motion } from 'framer-motion';
+
+interface LoadingContextType {
+  isLoading: boolean;
+}
+
+const LoadingContext = createContext<LoadingContextType>({ isLoading: true });
+
+export const useLoading = () => useContext(LoadingContext);
 
 const BaseLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -49,7 +57,7 @@ const BaseLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
 
   return (
-    <>
+    <LoadingContext.Provider value={{ isLoading }}>
       <AnimatePresence>
         {isLoading && (
           <motion.div
@@ -72,7 +80,7 @@ const BaseLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
         <Footer />
       </div>
-    </>
+    </LoadingContext.Provider>
   );
 };
 
