@@ -15,38 +15,42 @@ if (typeof window !== 'undefined') {
 const honeycombItems: HoneycombItem[] = [
   {
     id: '1',
-    src: '/videos/video_001.mp4',
-    type: 'video',
+    src: '/images/image_002.webp',
+    type: 'image',
     title: 'Minimalist Spatial Shelf',
     description: 'A cozy 3D spatial setup displaying luxury products. Lighting, depth, and shadow create a tactile, real-world shopping experience.',
+    objectPosition: 'left',
   },
   {
     id: '2',
-    src: '/images/image_001.jpeg',
+    src: '/images/image_002.webp',
     type: 'image',
     title: 'Botanical Walkthrough',
     description: 'Walk through a digital greenhouse with stone paths and climbing ivy. Experiences feel organic and alive.',
+    objectPosition: 'right',
   },
   {
     id: '3',
-    src: '/videos/video_002.mp4',
+    src: '/videos/video_004.mp4',
     type: 'video',
     title: 'Interactive Boutique',
     description: 'Items on shelves come to life. Interact directly instead of scrolling through long flat list pages.',
   },
   {
     id: '4',
-    src: '/videos/video_003.mp4',
-    type: 'video',
+    src: '/images/image_003.webp',
+    type: 'image',
     title: 'Luminous Wellness Studio',
     description: 'Natural design materials bathed in warm atmospheric lighting. Spatial spaces enhance user engagement and retention.',
+    objectPosition: 'left',
   },
   {
     id: '5',
-    src: '/videos/video_003.mp4',
-    type: 'video',
+    src: '/images/image_003.webp',
+    type: 'image',
     title: 'Artisanal Pottery Showroom',
     description: 'Exquisite physical crafts displayed in a virtual studio gallery, bringing sensory richness directly to the browser.',
+    objectPosition: 'right',
   },
 ];
 
@@ -90,10 +94,10 @@ export default function EcosystemPage() {
         <div className="absolute top-1/2 left-3/4 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-primary/5 blur-[180px] rounded-full -z-10 pointer-events-none animate-pulse duration-10000" />
 
         <div className="max-w-7xl mx-auto space-y-24 z-10 relative">
-          
+
           {/* Top Section: Split layout with Problem Statement (Left) and Honeycomb Grid (Right) */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
-            
+
             {/* Left Column: Problem Text */}
             <div className="lg:col-span-6 space-y-12">
               <div className="space-y-4 feature-grid">
@@ -118,7 +122,7 @@ export default function EcosystemPage() {
 
             {/* Right Column: Honeycomb Grid Showcase */}
             <div className="lg:col-span-6 w-full flex items-center justify-center honeycomb-container">
-              <HoneycombGrid items={honeycombItems} rowsConfig={[3, 2]} gap={0} className="w-full max-w-[680px]" />
+              <HoneycombGrid items={honeycombItems} rowsConfig={[2, 3]} gap={0} className="w-full max-w-[680px]" />
             </div>
 
           </div>
@@ -129,7 +133,7 @@ export default function EcosystemPage() {
               <Text variant="p" className="text-sm font-bold uppercase tracking-widest text-center" opacity={0.6}>
                 The Flat Web Is Losing Us:
               </Text>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
                 <div className="space-y-2 text-center md:border-r border-foreground/10 pr-0 md:pr-8">
                   <h2 className="text-5xl md:text-7xl font-bold drop-shadow-lg text-foreground">
@@ -139,7 +143,7 @@ export default function EcosystemPage() {
                     Bounce rate
                   </Text>
                 </div>
-                
+
                 <div className="space-y-2 text-center">
                   <h2 className="text-5xl md:text-7xl font-bold drop-shadow-lg text-foreground">
                     1.4<span className="text-primary">%</span>

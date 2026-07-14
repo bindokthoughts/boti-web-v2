@@ -10,6 +10,9 @@ export interface HoneycombItem {
   type: 'image' | 'video';
   title: string;
   description: string;
+  objectPosition?: string;
+  objectFit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
+  scale?: number;
 }
 
 interface HoneycombGridProps {
@@ -39,9 +42,12 @@ const HoneycombGrid: React.FC<HoneycombGridProps> = ({
   let itemIdx = 0;
   const rawCoords: Array<{ x: number; y: number; item: HoneycombItem; index: number }> = [];
 
+  // Find the maximum count in rowsConfig to center rows dynamically relative to it
+  const maxCount = Math.max(...rowsConfig);
+
   rowsConfig.forEach((count, r) => {
-    // If r is odd, offset horizontally by 0.5 * D to nest in the gaps
-    const offset = r % 2 === 1 ? 0.5 : 0;
+    // Dynamically calculate offset to center each row relative to maxCount
+    const offset = (maxCount - count) / 2;
 
     for (let i = 0; i < count; i++) {
       if (itemIdx >= items.length) break;
@@ -116,7 +122,7 @@ const HoneycombGrid: React.FC<HoneycombGridProps> = ({
         {positionedItems.map(({ left, top, width, height, item, index }) => (
           <div
             key={item.id}
-            className="absolute group cursor-pointer transition-all duration-300"
+            className="absolute group transition-all duration-300"
             style={{
               left,
               top,
@@ -129,7 +135,7 @@ const HoneycombGrid: React.FC<HoneycombGridProps> = ({
           >
             {/* Hexagon Wrapper with Clip-path and scaling hover */}
             <div
-              className="w-full h-full relative overflow-hidden transition-all duration-500 ease-out group-hover:scale-105 group-hover:z-20 active:scale-98 shadow-2xl"
+              className="w-full h-full relative overflow-hidden transition-all duration-500 ease-out shadow-2xl"
               style={{
                 clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
                 background: 'rgba(2, 6, 23, 0.4)',
@@ -144,9 +150,14 @@ const HoneycombGrid: React.FC<HoneycombGridProps> = ({
                     loop
                     muted
                     playsInline
-                    className="w-full h-full object-cover filter brightness-[0.85] contrast-[1.05]"
+                    className="w-full h-full filter brightness-[0.85] contrast-[1.05]"
+                    style={{
+                      objectFit: item.objectFit || 'cover',
+                      objectPosition: item.objectPosition || 'center',
+                      transform: item.scale ? `scale(${item.scale})` : undefined,
+                    }}
                   />
-                  <div className="absolute top-4 left-4 bg-primary/20 backdrop-blur-md border border-primary/30 p-2 rounded-full text-white pointer-events-none">
+                  <div className="absolute top-4 left-4 bg-primary/20 backdrop-blur-md border border-primary/30 p-2 rounded-full text-white">
                     <Play size={2} className="fill-white" />
                   </div>
                 </div>
@@ -154,7 +165,12 @@ const HoneycombGrid: React.FC<HoneycombGridProps> = ({
                 <img
                   src={item.src}
                   alt={item.title}
-                  className="w-full h-full object-cover filter brightness-[0.85] contrast-[1.05] transition-all duration-500 group-hover:scale-110"
+                  className="w-full h-full filter brightness-[0.85] contrast-[1.05] transition-all duration-500"
+                  style={{
+                    objectFit: item.objectFit || 'cover',
+                    objectPosition: item.objectPosition || 'center',
+                    transform: item.scale ? `scale(${item.scale})` : undefined,
+                  }}
                 />
               )}
 
@@ -163,7 +179,7 @@ const HoneycombGrid: React.FC<HoneycombGridProps> = ({
 
             {/* White Hexagon Border Overlay */}
             <svg
-              className="absolute inset-0 w-full h-full pointer-events-none opacity-100 group-hover:scale-105 group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.4)] transition-all duration-500 ease-out"
+              className="absolute inset-0 w-full h-full pointer-events-none opacity-100 transition-all duration-500 ease-out"
               viewBox="0 0 100 115.47"
               preserveAspectRatio="none"
             >

@@ -16,24 +16,27 @@ if (typeof window !== 'undefined') {
 const honeycombItems: HoneycombItem[] = [
   {
     id: '1',
-    src: '/images/honeycomb-1.png',
-    type: 'image',
+    src: '/videos/video_005.webm',
+    type: 'video',
     title: 'Immersive Business Microverse',
     description: 'Provide your customers with an interactive 3D digital storefront they can walk and browse through.',
+    objectPosition: 'left',
   },
   {
     id: '2',
-    src: '/images/honeycomb-2.png',
-    type: 'image',
+    src: '/videos/video_005.webm',
+    type: 'video',
     title: 'Unity-Powered Realism',
     description: 'Leverage native real-time game engine rendering directly in standard mobile and desktop browsers.',
+    objectPosition: 'right',
   },
   {
     id: '3',
-    src: '/images/honeycomb-3.png',
+    src: '/images/image_004.webp',
     type: 'image',
     title: 'Sensory Customer Journeys',
     description: 'Transform flat, dull grids into playful spatial experiences that multiply engagement and scroll depth.',
+    objectPosition: 'center',
   },
 ];
 
@@ -90,10 +93,10 @@ export default function BusinessPage() {
               and it becomes alive and fun.
             </Text>
 
-            <div className="inline-flex items-center gap-4 px-6 py-3 rounded-full border border-primary/30 text-white font-normal text-lg tracking-widest bg-background/50 backdrop-blur-xl shadow-[0_0_30px_rgba(0,70,255,0.15)] pill-badge mt-4">
+            {/* <div className="inline-flex items-center gap-4 px-6 py-3 rounded-full border border-primary/30 text-white font-normal text-lg tracking-widest bg-background/50 backdrop-blur-xl shadow-[0_0_30px_rgba(0,70,255,0.15)] pill-badge mt-4">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(0,70,255,0.8)]" />
               Built in Unity. Works on any device. No headset required.
-            </div>
+            </div> */}
           </div>
 
           {/* Right Column: Honeycomb Grid Photo Cluster */}
