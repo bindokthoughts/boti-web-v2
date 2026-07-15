@@ -9,10 +9,10 @@ interface ButtonProps {
   size?: 'sm' | 'md' | 'lg';
 }
 
-const Button: React.FC<ButtonProps> = ({ 
-  children, 
-  onClick, 
-  className = '', 
+const Button: React.FC<ButtonProps> = ({
+  children,
+  onClick,
+  className = '',
   variant = 'primary',
   size = 'md'
 }) => {

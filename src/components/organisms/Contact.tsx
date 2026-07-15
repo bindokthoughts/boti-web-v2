@@ -82,7 +82,7 @@ const Contact: React.FC = () => {
             <Textarea placeholder="Enter your message" className='backdrop-blur-sm' />
           </div>
           <div className="form-element pt-2">
-            <Button variant="primary" size="lg" className="w-full text-lg py-6 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-[0_0_20px_rgba(37,99,235,0.4)] border-none">
+            <Button variant="primary" size="lg" className="w-full text-lg py-6 bg-blue-600 hover:bg-blue-700 text-white shadow-[0_0_20px_rgba(37,99,235,0.4)] border-none">
               Send Message
             </Button>
           </div>

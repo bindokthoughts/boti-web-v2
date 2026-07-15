@@ -177,19 +177,6 @@ const HoneycombGrid: React.FC<HoneycombGridProps> = ({
 
             </div>
 
-            {/* White Hexagon Border Overlay */}
-            <svg
-              className="absolute inset-0 w-full h-full pointer-events-none opacity-100 transition-all duration-500 ease-out"
-              viewBox="0 0 100 115.47"
-              preserveAspectRatio="none"
-            >
-              <polygon
-                points="50,0.8 99.2,29.2 99.2,86.2 50,114.6 0.8,86.2 0.8,29.2"
-                fill="none"
-                stroke="#ffffff"
-                strokeWidth="0.25"
-              />
-            </svg>
           </div>
         ))}
       </div>
