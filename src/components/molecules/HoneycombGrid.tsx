@@ -131,7 +131,7 @@ const HoneycombGrid: React.FC<HoneycombGridProps> = ({
               transform: 'translate(-50%, -50%)',
               zIndex: activeItemIndex === index ? 30 : 10,
             }}
-            onClick={() => setActiveItemIndex(index)}
+          // onClick={() => setActiveItemIndex(index)}
           >
             {/* Hexagon Wrapper with Clip-path and scaling hover */}
             <div
