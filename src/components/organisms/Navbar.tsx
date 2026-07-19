@@ -18,6 +18,7 @@ const Navbar: React.FC = () => {
     { name: 'Ecosystem', path: '/ecosystem' },
     { name: 'Business', path: '/business' },
     { name: 'Team', path: '/team' },
+    { name: 'For Investors', path: '/investors' },
   ];
 
   const toggleTheme = () => {
