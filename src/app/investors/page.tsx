@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
-import Image from 'next/image';
+import React, { useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import Text from '@/components/atoms/Text';
 import Button from '@/components/atoms/Button';
@@ -16,7 +15,6 @@ if (typeof window !== 'undefined') {
 
 export default function InvestorsPage() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [bgType, setBgType] = useState<'image' | 'video'>('image');
 
   useGSAP(() => {
     const tl = gsap.timeline({
@@ -33,32 +31,18 @@ export default function InvestorsPage() {
 
   return (
     <>
-      <div ref={containerRef} className="min-h-screen flex items-center justify-start relative px-6 md:px-12 lg:px-24 overflow-hidden bg-background">
+      <div ref={containerRef} className="w-full min-h-screen flex items-center justify-start relative px-6 md:px-12 lg:px-24 overflow-hidden bg-background">
         {/* Background Layers with dark overlay for readability */}
         <div className="absolute inset-0 z-0">
-          {/* Image Background */}
-          <div className={`absolute inset-0 transition-opacity duration-1000 ${bgType === 'image' ? 'opacity-100' : 'opacity-0'}`}>
-            <Image
-              src="/images/bg_image_investorPage.webp"
-              alt="Investor Background"
-              fill
-              sizes="100vw"
-              className="object-cover animate-zoom-pan"
-              priority
-            />
-          </div>
-
           {/* Video Background */}
-          <div className={`absolute inset-0 transition-opacity duration-1000 ${bgType === 'video' ? 'opacity-100' : 'opacity-0'}`}>
-            <video
-              src="/videos/bg_video_investorPage.webm"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            />
-          </div>
+          <video
+            src="/videos/bg_video_investorPage.webm"
+            autoPlay
+            // loop
+            muted
+            playsInline
+            className="w-full h-full object-cover object-center bg-video-center"
+          />
 
           {/* Core overlays for readability */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent" />
@@ -87,42 +71,16 @@ export default function InvestorsPage() {
           </div>
 
           <div className="investors-reveal pt-4">
-            <Button variant="primary" size="md" className="flex items-center gap-3">
-              <span>View Investor Deck</span>
+            <Button
+              variant="primary"
+              size="md"
+              className="flex items-center gap-3"
+              onClick={() => window.open('https://tinyurl.com/BOTI-Investor-Deck', '_blank')}
+            >
+              <span>View Pitch Deck</span>
               <ArrowRight size={16} />
             </Button>
           </div>
-        </div>
-
-        {/* Bottom Info Section */}
-        <div className="absolute bottom-12 left-6 md:left-12 lg:left-24 z-10 overflow-hidden">
-          <Text className="investors-reveal text-xs md:text-sm font-medium tracking-wide text-foreground/40">
-            Pre-Seed <span className="mx-2 text-primary">•</span> Investor Materials
-          </Text>
-        </div>
-
-        {/* Sleek Glassmorphic Background Toggle switch */}
-        <div className="absolute bottom-12 right-6 md:right-12 lg:right-24 z-20 flex bg-foreground/5 backdrop-blur-md border border-[var(--glass-border)] rounded-full p-1 text-xs md:text-sm font-semibold tracking-wider uppercase">
-          <button
-            onClick={() => setBgType('image')}
-            className={`px-4 py-2 rounded-full transition-all duration-300 ${
-              bgType === 'image'
-                ? 'bg-primary text-white shadow-[0_0_15px_rgba(0,70,255,0.4)]'
-                : 'text-foreground/60 hover:text-foreground hover:bg-foreground/5'
-            }`}
-          >
-            BG Image
-          </button>
-          <button
-            onClick={() => setBgType('video')}
-            className={`px-4 py-2 rounded-full transition-all duration-300 ${
-              bgType === 'video'
-                ? 'bg-primary text-white shadow-[0_0_15px_rgba(0,70,255,0.4)]'
-                : 'text-foreground/60 hover:text-foreground hover:bg-foreground/5'
-            }`}
-          >
-            BG Video
-          </button>
         </div>
       </div>
 

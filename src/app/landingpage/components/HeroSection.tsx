@@ -1,7 +1,6 @@
 'use client';
 
 import React, { forwardRef } from 'react';
-import { Sparkles } from 'lucide-react';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -42,25 +41,27 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ heroTextRef }, 
       </div>
 
       <div className="sticky top-0 w-full flex flex-col items-center justify-center z-10">
-        <div className="text-center space-y-8 hero-boti">
-          <div className="lowercase inline-flex items-center gap-3 px-6 py-6 rounded-full border border-primary/20 text-foreground/40 font-medium text-md tracking-[0.2em] bg-primary/[0.03] backdrop-blur-sm">
-            <Sparkles size={14} className="text-primary" />
-            A browser that's bigger on the inside
+        <div className="text-center space-y-8 flex flex-col items-center">
+          <div className="hero-boti text-center space-y-8 flex flex-col items-center">
+            <div className="lowercase text-foreground/40 font-medium text-md tracking-[0.2em]">
+              A browser that's bigger on the inside
+            </div>
+            <div ref={heroTextRef} className="flex justify-center mix-blend-difference w-[80vw] max-w-[800px] mx-auto">
+              <Image
+                src={LogoTypo}
+                alt="BOTI"
+                width={847}
+                height={386}
+                style={{ width: '60%', height: 'auto' }}
+                className="object-contain pointer-events-none select-none"
+                priority
+              />
+            </div>
+            <div className="reveal-subtext">
+              <Text variant="p" opacity={0.3}>It's pronounced BODHI</Text>
+            </div>
           </div>
-          <div ref={heroTextRef} className="flex justify-center mix-blend-difference w-[80vw] max-w-[800px] mx-auto">
-            <Image
-              src={LogoTypo}
-              alt="BOTI"
-              width={847}
-              height={386}
-              style={{ width: '60%', height: 'auto' }}
-              className="object-contain pointer-events-none select-none"
-              priority
-            />
-          </div>
-          <div className="reveal-subtext">
-            <Text variant="p" opacity={0.3}>It's pronounced BODHI</Text>
-          </div>
+
         </div>
       </div>
     </section>
