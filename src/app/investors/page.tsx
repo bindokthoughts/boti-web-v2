@@ -59,8 +59,10 @@ export default function InvestorsPage() {
 
           <div className="overflow-hidden">
             <Text variant="h1" className="investors-reveal text-white text-5xl md:text-7xl font-bold tracking-tight leading-[1.05]">
-              Step inside the next<br />
-              evolution of the web.
+              The bridge to the future is here <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent font-extrabold">
+                Let’s assemble it
+              </span>
             </Text>
           </div>
 
