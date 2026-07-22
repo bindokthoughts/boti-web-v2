@@ -5,8 +5,10 @@ import Navbar from '../organisms/Navbar';
 import Footer from '../organisms/Footer';
 
 import MasterScene from '../organisms/MasterScene';
+import { usePathname } from 'next/navigation';
 import CustomCursor from '../atoms/CustomCursor';
 import Loader from '../organisms/loader/Loader';
+import TesseractLoader from '../organisms/loader/TesseractLoader';
 import { AnimatePresence, motion } from 'framer-motion';
 
 interface LoadingContextType {
@@ -20,6 +22,8 @@ export const useLoading = () => useContext(LoadingContext);
 const BaseLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isAppLoaded, setIsAppLoaded] = useState(false);
+  const pathname = usePathname();
+  const isLandingPage = pathname === '/';
 
   useEffect(() => {
     // Check if the document has already fully loaded
@@ -31,6 +35,12 @@ const BaseLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       return () => window.removeEventListener('load', handleLoad);
     }
   }, []);
+
+  useEffect(() => {
+    if (!isLandingPage && isAppLoaded) {
+      setIsLoading(false);
+    }
+  }, [isLandingPage, isAppLoaded]);
 
   useEffect(() => {
     if (isLoading) {
@@ -67,7 +77,11 @@ const BaseLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             transition={{ duration: 0.8, ease: 'easeInOut' }}
             className="fixed inset-0 z-[9999]"
           >
-            <Loader isLoaded={isAppLoaded} onComplete={() => setIsLoading(false)} />
+            {isLandingPage ? (
+              <Loader isLoaded={isAppLoaded} onComplete={() => setIsLoading(false)} />
+            ) : (
+              <TesseractLoader />
+            )}
           </motion.div>
         )}
       </AnimatePresence>
