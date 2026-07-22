@@ -21,9 +21,8 @@ export default function TeamPage() {
 
 
   useGSAP(() => {
-    // Initialize timeline as paused so we can control it based on starting scroll position
+    // Play entrance animation on mount
     introTl.current = gsap.timeline({
-      paused: true,
       defaults: { ease: "expo.out", duration: 1.5 }
     })
       .from(".team-reveal", {
@@ -40,24 +39,6 @@ export default function TeamPage() {
         ease: "power4.out",
         clearProps: "all"
       }, "-=0.8");
-
-    // Scroll trigger to play/reverse timeline based on scroll position
-    ScrollTrigger.create({
-      trigger: containerRef.current,
-      start: "top top",
-      end: 800,
-      onLeave: () => introTl.current?.reverse(),
-      onEnterBack: () => introTl.current?.play(),
-      onEnter: () => introTl.current?.play(),
-      onRefresh: (self) => {
-        // Handle page refresh/reload when already scrolled
-        if (self.scroll() < 800) {
-          introTl.current?.play();
-        } else {
-          introTl.current?.progress(0).pause();
-        }
-      }
-    });
 
     // Button reveal (only animate if the button is present in the DOM)
     if (containerRef.current?.querySelector('.join-btn')) {
@@ -80,8 +61,8 @@ export default function TeamPage() {
           <header className="max-w-4xl space-y-8">
             <div className="overflow-hidden">
               <Text variant="h1" className="team-reveal">
-                "Founders Built<br />
-                <Text variant="span" opacity={0.3}>for the Moment"</Text>
+                Founders Built<br />
+                <Text variant="span" opacity={0.3}>for the Moment</Text>
               </Text>
             </div>
             <Text className="text-primary font-bold uppercase tracking-widest team-reveal">

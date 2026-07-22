@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 footer-content">
         <Logo />
         <Text variant="span" className="text-foreground/30 text-sm font-medium">
-          © 2026 BOTI. <br /> All rights reserved.
+          © 2026 BOTI <br /> All rights reserved
         </Text>
       </div>
     </footer>

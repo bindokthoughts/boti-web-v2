@@ -66,11 +66,11 @@ export default function InvestorsPage() {
             </Text>
           </div>
 
-          <div className="overflow-hidden">
+          {/* <div className="overflow-hidden">
             <Text variant="p" className="investors-reveal text-foreground/70 max-w-xl text-lg md:text-xl font-medium leading-relaxed">
               An immersive interface for a web that finally feels alive.
             </Text>
-          </div>
+          </div> */}
 
           <div className="investors-reveal pt-4">
             <Button
