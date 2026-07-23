@@ -45,7 +45,7 @@ const OurSolutionSection: React.FC = () => {
           icon={<Box size={32} />}
           title="BOTI Builder"
           description="Makes it easy to create a 3D space for your business, no tech skills or big budgets required."
-          onClick={() => router.push('/ecosystem')}
+          onClick={() => router.push('/business')}
         />
       </div>
     </section>
