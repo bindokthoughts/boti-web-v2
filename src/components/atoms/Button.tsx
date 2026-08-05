@@ -1,10 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-interface ButtonProps {
+export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onDrag' | 'onDragStart' | 'onDragEnd' | 'onAnimationStart'> {
   children: React.ReactNode;
-  onClick?: () => void;
-  className?: string;
   variant?: 'primary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
 }
@@ -14,7 +12,10 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   className = '',
   variant = 'primary',
-  size = 'md'
+  size = 'md',
+  type = 'button',
+  disabled,
+  ...props
 }) => {
   const variants = {
     primary: 'bg-primary text-white shadow-[0_0_20px_rgba(0,70,255,0.3)] hover:shadow-[0_0_30px_rgba(0,70,255,0.5)]',
@@ -30,10 +31,13 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <motion.button
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
+      whileHover={disabled ? undefined : { scale: 1.02 }}
+      whileTap={disabled ? undefined : { scale: 0.98 }}
       onClick={onClick}
+      type={type}
+      disabled={disabled}
       className={`rounded-full font-bold uppercase tracking-widest transition-all ${variants[variant]} ${sizes[size]} ${className}`}
+      {...props}
     >
       {children}
     </motion.button>

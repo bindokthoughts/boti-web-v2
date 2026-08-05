@@ -6,16 +6,23 @@ export interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
 }
 
 export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
-  ({ className = '', options, ...props }, ref) => {
+  ({ className = '', options, defaultValue, value, placeholder, ...props }, ref) => {
+    const isControlled = value !== undefined;
+    const selectProps: React.SelectHTMLAttributes<HTMLSelectElement> = {
+      className: `w-full px-4 py-3 bg-[rgba(20,40,50,0.5)] border border-[rgba(37,84,184,0.84)] text-white placeholder:text-white/50 focus:outline-none focus:border-[rgba(148,178,245,0.86)] transition-all duration-300 appearance-none cursor-pointer ${className}`,
+      ...props,
+    };
+
+    if (isControlled) {
+      selectProps.value = value;
+    } else {
+      selectProps.defaultValue = defaultValue ?? '';
+    }
+
     return (
       <div className="relative w-full">
-        <select
-          ref={ref}
-          className={`w-full px-4 py-3 bg-[rgba(20,40,50,0.5)] border border-[rgba(37,84,184,0.84)] text-white placeholder:text-white/50 focus:outline-none focus:border-[rgba(148,178,245,0.86)] transition-all duration-300 appearance-none cursor-pointer ${className}`}
-          {...props}
-          defaultValue=""
-        >
-          <option value="" disabled className="bg-slate-900 text-white">{props.placeholder || 'Select an option'}</option>
+        <select ref={ref} {...selectProps}>
+          <option value="" disabled className="bg-slate-900 text-white">{placeholder || 'Select an option'}</option>
           {options.map((opt) => (
             <option key={opt.value} value={opt.value} className="bg-slate-900 text-white">
               {opt.label}
