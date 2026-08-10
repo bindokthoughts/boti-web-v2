@@ -123,8 +123,8 @@ const Contact: React.FC = () => {
           {status.type && (
             <div
               className={`p-4 text-sm font-medium text-center transition-all duration-300 ${status.type === 'success'
-                  ? 'bg-emerald-500/20 border border-emerald-500/50 text-emerald-300'
-                  : 'bg-rose-500/20 border border-rose-500/50 text-rose-300'
+                ? 'bg-emerald-500/20 border border-emerald-500/50 text-emerald-300'
+                : 'bg-rose-500/20 border border-rose-500/50 text-rose-300'
                 }`}
             >
               {status.message}
@@ -165,7 +165,8 @@ const Contact: React.FC = () => {
               options={[
                 { label: "General Inquiry", value: "General Inquiry" },
                 { label: "Partnership", value: "Partnership" },
-                { label: "Support", value: "Support" }
+                { label: "Support", value: "Support" },
+                { label: "Feedback", value: "Feedback" }
               ]}
               className="backdrop-blur-sm"
               required
