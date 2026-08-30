@@ -43,7 +43,7 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ heroTextRef }, 
       <div className="sticky top-0 w-full flex flex-col items-center justify-center z-10">
         <div className="text-center space-y-8 flex flex-col items-center">
           <div className="hero-boti text-center space-y-8 flex flex-col items-center">
-            <div className="lowercase text-foreground/40 font-medium text-md tracking-[0.2em]">
+            <div className="hero-header-text lowercase text-foreground/40 font-medium text-md tracking-[0.2em]">
               A browser that's bigger on the inside
             </div>
             <div ref={heroTextRef} className="flex justify-center mix-blend-difference w-[80vw] max-w-[800px] mx-auto">
@@ -57,11 +57,10 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ heroTextRef }, 
                 priority
               />
             </div>
-            <div className="reveal-subtext">
+            <div className="hero-subtext">
               <Text variant="p" opacity={0.3}>It's pronounced BODHI</Text>
             </div>
           </div>
-
         </div>
       </div>
     </section>

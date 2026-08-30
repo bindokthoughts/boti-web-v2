@@ -32,17 +32,28 @@ export default function LandingPage() {
     if (isLoading) return;
     // 1. Entrance Animation Timeline
     introTl.current = gsap.timeline({
-      defaults: { ease: "expo.out", duration: 1.5 }
+      defaults: { ease: "power3.out" }
     })
-      .from(".hero-boti", {
-        scale: 1.5,
+      .from(".hero-header-text", {
         opacity: 0,
-        filter: "blur(20px)",
-        duration: 3,
-        ease: "power4.inOut",
-        immediateRender: false,
-        clearProps: "all"
-      });
+        y: 20,
+        duration: 1,
+        delay: 0.2
+      })
+      .from(heroTextRef.current, {
+        scale: 1.2,
+        opacity: 0,
+        filter: "blur(10px)",
+        duration: 1.5,
+        ease: "power4.out"
+      }, "-=0.5")
+      .from(".hero-subtext", {
+        scale: 5,
+        opacity: 0,
+        filter: "blur(10px)",
+        duration: 1,
+        ease: "power4.out"
+      }, "-=0.5");
     // 3. Section specific animations
     gsap.to(heroTextRef.current, {
       scale: 1.2,
@@ -95,7 +106,7 @@ export default function LandingPage() {
         scrollTrigger: {
           trigger: el,
           start: "top 90%",
-          toggleActions: "play none none reverse"
+          once: true
         }
       });
     });
