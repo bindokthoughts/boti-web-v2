@@ -27,7 +27,7 @@ export default function LandingPage() {
   const { isLoading } = useLoading();
 
   const introTl = useRef<gsap.core.Timeline | null>(null);
-
+  const subtextTl = useRef<gsap.core.Timeline | null>(null);
   useGSAP(() => {
     if (isLoading) return;
     // 1. Entrance Animation Timeline
@@ -40,20 +40,30 @@ export default function LandingPage() {
         duration: 1,
         delay: 0.2
       })
-      .from(heroTextRef.current, {
-        scale: 1.2,
+      .from(".hero-logo-inner", {
+        scale: 8,
         opacity: 0,
-        filter: "blur(10px)",
-        duration: 1.5,
-        ease: "power4.out"
-      }, "-=0.5")
-      .from(".hero-subtext", {
-        scale: 5,
-        opacity: 0,
-        filter: "blur(10px)",
-        duration: 1,
+        filter: "blur(24px)",
+        duration: 2,
         ease: "power4.out"
       }, "-=0.5");
+
+
+    // 2. Sub-text Scroll Trigger Animation Timeline  
+    subtextTl.current = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".hero-subtext",
+        start: "top 40%",
+      }
+    });
+    subtextTl.current.from(".hero-subtext", {
+      scale: 5,
+      opacity: 0,
+      filter: "blur(10px)",
+      duration: 1,
+      ease: "power4.out"
+    });
+
     // 3. Section specific animations
     gsap.to(heroTextRef.current, {
       scale: 1.2,

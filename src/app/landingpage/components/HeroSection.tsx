@@ -47,15 +47,17 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ heroTextRef }, 
               A browser that's bigger on the inside
             </div>
             <div ref={heroTextRef} className="flex justify-center mix-blend-difference w-[80vw] max-w-[800px] mx-auto">
-              <Image
-                src={LogoTypo}
-                alt="BOTI"
-                width={847}
-                height={386}
-                style={{ width: '60%', height: 'auto' }}
-                className="object-contain pointer-events-none select-none"
-                priority
-              />
+              <div className="hero-logo-inner w-full flex justify-center">
+                <Image
+                  src={LogoTypo}
+                  alt="BOTI"
+                  width={847}
+                  height={386}
+                  style={{ width: '60%', height: 'auto' }}
+                  className="object-contain pointer-events-none select-none"
+                  priority
+                />
+              </div>
             </div>
             <div className="hero-subtext">
               <Text variant="p" opacity={0.3}>It's pronounced BODHI</Text>
